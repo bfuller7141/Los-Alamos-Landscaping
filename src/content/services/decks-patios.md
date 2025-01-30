@@ -1,5 +1,6 @@
 ---
 title: "Decks & Patios"
+slug: "decks-patios"
 pageTitle: "Custom Decks and Patios"
 icon: "/images/service-icons/service-icon_decks.svg"
 description: "Turn your yard into a destination with custom decks and patios. Built to last, they’re perfect for relaxing or entertaining."

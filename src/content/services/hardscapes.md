@@ -1,5 +1,6 @@
 ---
 title: "Hardscaping"
+slug: "hardscapes"
 pageTitle: "Custom Hardscapes"
 icon: "/images/service-icons/service-icon_hardscaping.svg"
 description: "Enhance your yard with expertly crafted hardscaping. From patios to retaining walls, we build durable and stylish features."

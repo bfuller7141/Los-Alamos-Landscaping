@@ -1,5 +1,6 @@
 ---
 title: "Sod & Seeding"
+slug: "sod-seeding"
 pageTitle: "Sod & Seeding Services"
 icon: "/images/service-icons/service-icon_seeding.svg"
 description: "Achieve a green, healthy lawn with our professional sod and seeding services. We prepare the soil and deliver lasting results."

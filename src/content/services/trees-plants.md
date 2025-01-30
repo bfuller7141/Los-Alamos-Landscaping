@@ -1,5 +1,6 @@
 ---
 title: "Trees & Plants"
+slug: "trees-plants"
 pageTitle: "Trees and Plant Services"
 icon: "/images/service-icons/service-icon_trees.svg"
 description: "Add beauty and life to your yard with trees, shrubs, and flowers. We help you select and care for plants suited to Los Alamos."

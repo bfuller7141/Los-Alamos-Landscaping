@@ -1,5 +1,6 @@
 ---
 title: "Irrigation Service"
+slug: "irrigation-service"
 pageTitle: "Irrigation Systems"
 icon: "/images/service-icons/service-icon_irrigation.svg"
 description: "Efficient watering is key to a healthy yard. We design, install, and maintain systems that ensure your landscape stays lush and vibrant."

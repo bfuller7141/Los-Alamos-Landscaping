@@ -1,5 +1,6 @@
 ---
 title: "Landscape Design"
+slug: "landscape-design"
 pageTitle: "Landscape Design"
 icon: "/images/service-icons/service-icon_design.svg"
 description: "Great landscapes start with great plans. We design outdoor spaces that combine beauty and function, tailored to fit your property."
