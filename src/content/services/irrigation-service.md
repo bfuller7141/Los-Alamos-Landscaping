@@ -10,5 +10,5 @@ image: "/images/uploads/irrigation_main-img.webp"
 alt: "A lush green backyard with a trampoline, surrounded by trees and neighboring houses under a bright blue sky, showcasing a well-maintained lawn."
 imageTwo: "/images/uploads/irrigation_imgTwo.webp"
 altTwo: "A vibrant, freshly maintained lawn with a tree casting shade, bordered by decorative rocks and surrounded by neatly trimmed shrubs in a residential front yard."
-gallery:
+gallery: []
 ---
