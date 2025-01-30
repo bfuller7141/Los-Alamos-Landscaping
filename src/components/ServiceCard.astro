@@ -1,0 +1,20 @@
+---
+export interface ServiceProps {
+    title: string;
+    icon: string;
+    description: string;
+    btntxt: string;
+    slug: string;
+}
+
+const {title, icon, description, btntxt, slug } = Astro.props as ServiceProps;
+---
+<div class="service-wrapper">
+    <div class="service-top">
+        <img src={icon} alt='' role="presentation" class="service-icon" loading="lazy"/>
+        <h3 class="title-sm no-padding">{title}</h3>
+    </div>
+    <div class="service-bottom">
+        <p class="body-sm no-padding">{description}</p>
+        <a href={slug} class="btn-txtred">{btntxt}</a>
+</div>

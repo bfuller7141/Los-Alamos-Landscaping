@@ -1,0 +1,148 @@
+---
+import TestimonialCard from "./TestimonialCard.astro";
+
+// Import and eagerly load testimonials
+const testimonials = import.meta.glob("../content/testimonials/*.md", { eager: true });
+
+// Shuffle the array of testimonials
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+const parsedTestimonials = Object.entries(testimonials).map(([path, module]) => {
+  if (typeof module === 'object' && module !== null) {
+    return {
+      ...module,
+      slug: path.split("/").pop()?.replace(".md", ""),
+    };
+  }
+  return {
+    slug: path.split("/").pop()?.replace(".md", ""),
+  };
+});
+
+const shuffledTestimonials = shuffleArray(parsedTestimonials).slice(0, 6);
+---
+<div class="testimonial-container">
+    <ul class="testimonial-grid">
+        {shuffledTestimonials.map((testimonial) => (
+            <li>
+                <TestimonialCard
+                    rating={testimonial.frontmatter.rating}
+                    name={testimonial.frontmatter.name}
+                    testimonial={testimonial.frontmatter.testimonial}
+                />
+            </li>
+        ))}
+    </ul>
+</div>
+
+<div class="testimonial-slider">
+    <div class="testimonial-slider-wrapper">
+        {shuffledTestimonials.map((testimonial) => (
+            <div class="testimonial-card-wrapper">
+                <TestimonialCard
+                    rating={testimonial.frontmatter.rating}
+                    name={testimonial.frontmatter.name}
+                    testimonial={testimonial.frontmatter.testimonial}
+                />
+            </div>
+        ))}
+    </div>
+    <div class="testimonial-dots">
+      {shuffledTestimonials.map((testimonial, index) => (
+        <div class="-testimonial-dot" data-index={index}></div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+        gap: 1.5rem;
+        padding: 0;
+        margin: 3rem 0 0 0;
+        list-style: none;
+        position: relative;
+    }
+    /* Slider Layout for Smaller Screens */
+    @media screen and (max-width: 867px) {
+    .testimonial-grid {
+        display: none;
+    }
+
+    .testimonial-slider {
+        display: block;
+        overflow: hidden;
+    }
+
+    .testimonial-slider-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        scroll-behavior: smooth;
+    }
+
+    .testimonial-card-wrapper {
+        flex: 0 0 auto;
+        width: 90%;
+        scroll-snap-align: center;
+        box-sizing: border-box;
+    }
+
+    .testimonial-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .testimonial-dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--red-100);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .testimonial-dot.active {
+        background-color: var(--red-500);
+    }
+    }
+/* Hide slider for larger screens */
+  @media screen and (min-width: 868px) {
+    .testimonial-slider {
+      display: none;
+    }
+  }
+
+/* Hide scrollbar */
+  @media screen and (max-width: 867px) {
+    .testimonial-slider {
+      display: block;
+      overflow: hidden;
+    }
+
+    .testimonial-slider-wrapper {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .testimonial-slider-wrapper::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  }
+</style>

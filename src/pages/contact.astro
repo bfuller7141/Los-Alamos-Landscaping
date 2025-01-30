@@ -1,0 +1,145 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FAQ from "../components/FAQ.astro";
+import FooterMain from "../components/FooterMain.astro";
+import GeneralForm from "../components/Forms/GeneralForm.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import NavMain from "../components/NavMain.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title= "Los Alamos Landscaping | Contact Us"
+            description= "Have a question or need more information? Whether you’re curious about our services, want to learn more about our community projects, or just need advice on landscaping in Los Alamos or White Rock, we’d love to hear from you! Reach out to our friendly team by phone, email, or the form below. We’re always happy to help and look forward to connecting with you!"
+            keywords="landscaping, landscaping services, landscaping company, landscaping design, landscaping maintenance"
+            url="https://losalamoslandscaping.com/contact"
+        />
+    </head>
+    <NavMain />
+    <body>
+        <main>
+            <section class="hero">
+                <div class="padding-hero-xlbottom">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <p class="title-sm text-red">Contact Los Alamos Landscaping</p>
+                            <h2 class="title-page text-center">Get In Touch <br class="hide-mobile"><span class="text-red">With Us Today</span></h2>
+                            <p class="body-txt text-center">Have a question or need more information? Whether you’re curious about our services, want to learn more about our community projects, or just need advice on landscaping in Los Alamos or White Rock, we’d love to hear from you! Reach out to our friendly team by phone, email, or the form below. We’re always happy to help and look forward to connecting with you!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <GeneralForm />
+                    </div>
+                </div>
+                <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            <section>
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+                                <div class="img">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872.3878039243735!2d-106.25564870433085!3d35.87617815331926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87181247887fe561%3A0xaf1f09b98a39dc7e!2sLos%20Alamos%20Landscaping%20%26%20More!5e1!3m2!1sen!2sus!4v1738266006293!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+							<div class="wrapper">
+								<h2 class="title-section">Stop By Our <br class="mobile-hide"><span class="text-red">Office</span></h2>
+								<div class="body-wrapper">
+									<p class="body-txt">Stop by our office to chat with our team and see where the magic happens! Conveniently located in Los Alamos, we’re proud to be part of this vibrant community. Whether you’re looking for expert advice, want to discuss your landscaping ideas in person, or just want to say hello, we’re always happy to welcome you.</p>
+								</div>
+                                <div class="contact-wrap">
+                                    <a href="https://www.google.com/maps/dir//2470+E+Rd,+Los+Alamos,+NM+87544/@35.8759013,-106.3379868,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x87181247887fe561:0xaf1f09b98a39dc7e!2m2!1d-106.2555857!2d35.8759294?entry=ttu&g_ep=EgoyMDI1MDExNC4wIKXMDSoASAFQAw%3D%3D" class="contact-link"> 
+                                        <img src="/images/icons/contact-icon_location.svg" alt="" role="presentation" class="contact-icon" loading="lazy" />
+                                        <p class="contact-link">2470 E Rd, Suite A<br>Los Alamos, NM 87544</p>
+                                    </a>
+                                </div>
+								<div class="btn-wrapper">
+									<a href="/estimate" class="btn-primary">Get an Estimate</a>
+									<a href="/services" class="btn-secondary">View Our Services</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> 
+            <section>
+				<div class="padding-global">
+					<div class="container">
+						<h2 class="title-section text-center">Frequently <span class="text-red">Asked</span> Questions</h2>
+						<div class="faq">
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+						</div>
+					</div>
+				</div>
+			</section>                    
+            <section class="section-relative">
+                <img class="leaf-3" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+				<div class="padding-short-bottom">
+					<div class="container">
+						<div class="wrapper-col">
+							<GetInTouch />
+							<div class="wrapper">
+								<img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="deco-bottom-short"></div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>
+
+<style>
+        .contact-wrap {
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem;
+    }
+    .contact-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0.5rem;
+        list-style: none;
+        text-decoration: none;
+        color: var(--brown-500);
+        font-size: var(--title-xs);
+        font-weight: 700;
+        transition: all 0.3s ease;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+    .contact-link:hover {
+        color: var(--red-500);
+    }
+    .contact-icon {
+        height: clamp(1.5rem, 2vw, 2.25rem);
+        aspect-ratio: 1/1;
+    }
+</style>

@@ -1,0 +1,33 @@
+---
+export interface CheckHighlightProps {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props as CheckHighlightProps;
+---
+<div class="check-highlight">
+    <div class="check-highlight-icon">
+        <img src="/images/icons/icon_checkmark.svg" alt="" role="presentation" class="check-highlight-icon-img" loading="lazy" />
+    </div>
+    <div class="check-highlight-content">
+        <p class="body-txt no-padding"><strong>{title}:</strong> {description}</p>
+    </div>
+</div>
+
+<style>
+    .check-highlight {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .check-highlight-icon-img {
+        height: 1.5rem;
+        aspect-ratio: 1/1;
+    }
+</style>

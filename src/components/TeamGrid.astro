@@ -1,0 +1,134 @@
+---
+import TeamCard from "./TeamCard.astro";
+
+const teamMembers = import.meta.glob("../content/team/*.md", { eager: true });
+
+const parsedTeamMembers = Object.entries(teamMembers).map(([path, module]) => {
+  if (typeof module === "object" && module !== null) {
+    return {
+      ...module,
+      slug: path.split("/").pop()?.replace(".md", ""),
+    };
+  }
+  return {
+    slug: path.split("/").pop()?.replace(".md", ""),
+  };
+});
+
+// Sort the team members in the desired order
+const sortedTeamMembers = parsedTeamMembers.sort((a, b) => {
+  const order = ["Craig_Wehner", "Rachel_Wehner", "Dale_Nichols", "Megan_Tripp", "Amy_Worcester", "Tucker"];
+  return order.indexOf(a.slug ?? "") - order.indexOf(b.slug ?? "");
+});
+---
+
+<div class="team-container">
+    <!-- Team Members Grid -->
+    <ul class="team-grid">
+        {sortedTeamMembers.map((team: any) => (
+            <li>
+                <TeamCard
+                    name={team.frontmatter.name}
+                    role={team.frontmatter.role}
+                    image={team.frontmatter.image}
+                />
+            </li>
+        ))}
+    </ul>
+
+    <!-- Team Members Slider -->
+    <div class="team-slider">
+        <ul class="team-slider-wrapper">
+            {sortedTeamMembers.map((team: any) => (
+                <li class="team-card-wrapper">
+                    <TeamCard
+                        name={team.frontmatter.name}
+                        role={team.frontmatter.role}
+                        image={team.frontmatter.image}
+                    />
+                </li>
+            ))}
+        </ul>
+    </div>
+</div>
+
+<style>
+    li {
+        list-style: none;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Team Grid */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+        gap: 2rem;
+        padding: 0;
+        margin: 3rem 0 0 0;
+        position: relative;
+    }
+
+    /* Team Slider for Smaller Screens */
+    @media screen and (max-width: 867px) {
+        .team-grid {
+            display: none;
+        }
+
+        .team-slider {
+            display: block;
+            overflow: hidden;
+        }
+
+        .team-slider-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory; /* Enable snapping */
+            gap: 1rem;
+            scroll-behavior: smooth; /* Smooth scrolling */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .team-slider-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .team-card-wrapper {
+            flex: 0 0 auto; /* Prevent shrinking */
+            width: 90%; /* Width of each card */
+            scroll-snap-align: center; /* Snap to the center of the card */
+            box-sizing: border-box;
+        }
+
+        .team-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .team-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--red-100);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .team-dot.active {
+            background-color: var(--red-500);
+        }
+    }
+
+    /* Hide Slider for Larger Screens */
+    @media screen and (min-width: 868px) {
+        .team-slider {
+            display: none;
+        }
+    }
+</style>

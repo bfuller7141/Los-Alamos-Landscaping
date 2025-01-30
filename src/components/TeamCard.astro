@@ -1,0 +1,69 @@
+---
+export interface teamProps {
+    name: string;
+    image: string;
+    role: string;
+}
+
+const { name, image, role } = Astro.props as teamProps;
+---
+<div class="team-card">
+    <img src={image} alt={name} class="team-card-img" loading="lazy" />
+    <div class="team-card-link">
+        <h3 class="team-card-title">{name}</h3>
+        <h4 class="role">{role}</h4>
+    </div>
+</div>
+
+<style>
+    .team-card {
+        position: relative;
+        min-width: 20rem;
+        aspect-ratio: 0.7/1;
+        display: block;
+        overflow: hidden;
+        border-radius: 0.25rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: all 0.3s;
+    }
+
+    .team-card-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0.25rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.5rem 1.5rem;
+        background: var(--red-500);
+        color: var(--white);
+    }
+
+    .team-card-title {
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        font-weight: 600;
+        padding: 0;
+        margin: 0;
+    }
+
+    .role {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+    }
+</style>

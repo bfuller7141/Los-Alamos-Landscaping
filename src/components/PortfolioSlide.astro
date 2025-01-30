@@ -1,0 +1,169 @@
+---
+import { getCollection } from 'astro:content';
+import PortfolioCard from './PortfolioCard.astro';
+
+const projects = await getCollection('projects');
+---
+
+<div class="slider-container">
+  <div class="slider" id="slider">
+    {projects.map((project: any) => (
+      <PortfolioCard 
+        title={project.data.title} 
+        image={project.data.image} 
+        link={`/projects/${project.slug}`}
+      />
+    ))}
+  </div>
+  <div class="slider-controls">
+    <button id="prevButton" aria-label="Scroll Backward" class="slider-btn">
+        <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow left" loading="lazy" />
+    </button>
+    <button id="nextButton" aria-label="Scroll Forward" class="slider-btn">
+        <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow" loading="lazy" />
+    </button>
+  </div>
+</div>
+
+<script>
+    const slider = document.getElementById('slider');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+  
+    if (slider && prevButton && nextButton) {
+      // Dynamically calculate the width of one card
+      const cardWidth = slider.firstElementChild
+        ? slider.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(slider).gap)
+        : 0;
+  
+      prevButton.addEventListener('click', () => {
+        slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      });
+  
+      nextButton.addEventListener('click', () => {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      });
+  
+      // Mobile swipe handling
+      let startX: number | null = null;
+      let scrollStart: number | null = null; // Track initial scroll position
+  
+      slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        scrollStart = slider.scrollLeft; // Store the initial scroll position
+      });
+  
+      slider.addEventListener('touchmove', (e) => {
+        if (startX !== null) {
+          const currentX = e.touches[0].clientX;
+          const distance = startX - currentX;
+          if (scrollStart !== null) {
+            slider.scrollLeft = scrollStart + distance; // Adjust scroll position as user swipes
+          }
+        }
+      });
+  
+      slider.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+  
+        const endX = e.changedTouches[0].clientX;
+        const distance = startX - endX;
+  
+        if (Math.abs(distance) > cardWidth / 2) {
+          // Scroll to the next or previous card if swipe exceeds threshold
+          slider.scrollBy({
+            left: distance > 0 ? cardWidth : -cardWidth,
+            behavior: 'smooth',
+          });
+        } else {
+          // Snap back to the closest card if swipe is too short
+          slider.scrollBy({
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
+  
+        // Reset swipe state
+        startX = null;
+        scrollStart = null;
+      });
+    }
+  </script>
+   
+
+<style>
+  .slider-container {
+    position: relative;
+  }
+
+  .slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    height: fit-content;
+    padding: 1rem 0;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome/Safari */
+  }
+
+  .slider-controls {
+    position: absolute;
+    bottom: -3rem;
+    right: 0rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .slider-btn {
+    background: var(--red-500);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .slider-btn:hover {
+    background: var(--red-800);
+  }
+
+  .portfolio-card-arrow {
+        width: clamp(1rem, 2vw, 1.25rem);
+        height: auto;
+    }
+  .portfolio-card-arrow.left {
+        transform: rotate(180deg);
+    }
+
+  .slider > * {
+    flex: 0 0 calc(33.333% - 1rem);
+    height: fit-content;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 1024px) {
+    .slider > * {
+      flex: 0 0 calc(50% - 1rem);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slider > * {
+      flex: 0 0 100%;
+    }
+
+    .slider-controls {
+      position: static;
+      width: 50%;
+    }
+
+    .slider-btn {
+      width: 100%;
+    }
+</style>

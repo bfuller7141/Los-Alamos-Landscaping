@@ -1,0 +1,67 @@
+---
+export interface TestimonialProps {
+    rating: number;
+    name: string;
+    testimonial: string;
+}
+
+const {rating, name, testimonial} = Astro.props as TestimonialProps;
+const fullStars = Math.floor(rating);
+const emptyStars = 5 - fullStars;
+---
+<div class="card-wrapper">
+    <div class="testimonial-top">
+        <div class="rating" role="img" aria-label={`Rating: ${rating} out of 5 stars`}>
+            {Array(fullStars).fill('★').map((_, index) => (
+                <span class="rating-star full" aria-hidden="true">★</span>
+            ))}
+            {Array(emptyStars).fill('★').map((_, index) => (
+                <span class="rating-star empty" aria-hidden="true">★</span>
+            ))}
+        </div>
+        <div class="title-xs no-padding">{name}</div>
+    </div>
+    <div class="testimonial-bottom">
+        <p class="body-sm no-padding">{testimonial}</p>
+    </div>
+</div>
+
+<style>
+    .card-wrapper{
+        height: 100%;
+    }
+    .testimonial-top {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        width: 100%;
+        height: auto;
+        padding: 1rem 0 0 0;
+        margin: 0;
+    }
+
+    .testimonial-bottom {
+        padding: 0 0 1rem 0;
+    }
+
+    .rating {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.125rem;
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+    }
+    .rating-star {
+        font-size: var(--fs-bodylg);
+    }
+    .full {
+        color: var(--red-500);
+    }
+    .empty {
+        color: var(--gray-200);
+    }
+</style>

@@ -1,11 +1,200 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseHead from '../components/BaseHead.astro';
+import NavMain from '../components/NavMain.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import PortfolioSlide from '../components/PortfolioSlide.astro';
+import CheckHighlight from '../components/CheckHighlight.astro';
+import FAQ from '../components/FAQ.astro';
+import GetInTouch from '../components/GetInTouch.astro';
+import FooterMain from '../components/FooterMain.astro';
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Los Alamos Landscaping & More | Expert Landscaping Services"
+			description="Los Alamos Landscaping & More has been enhancing outdoor spaces in Los Alamos and White Rock, NM, since 1999. From landscape design and irrigation to hardscaping and maintenance, we deliver exceptional craftsmanship and outstanding customer service. Call today to transform your outdoor space!"
+			keywords="Los Alamos Landscaping, Landscaping Los Alamos, Landscaping White Rock, Landscape Design NM, Hardscaping Los Alamos, Irrigation Los Alamos, Lawn Maintenance NM, Outdoor Living Los Alamos, Sod and Seeding Los Alamos, Decks and Patios Los Alamos"
+			image="/opengraph/og-home.jpg"
+			url="https://losalamoslandscaping.com"
+		/>
+	</head>
+	<body>
+		<header>
+			<NavMain />
+		</header>
+		<main>
+			<section class="hero">
+				<div class="padding-hero">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper hero-center">
+								<h1 class="title-page">Landscaping <br class="mobile-hide"><span class="text-red">Services You</span> <br class="mobile-hide">Can Count On</h1>
+								<p class="title-sm text-red">Proudly Serving Los Alamos Since 1999</p>
+								<div class="btn-wrapper">
+									<a href="/estimate" class="btn-primary">Get an Estimate Today</a>
+								</div>
+							</div>
+							<div class="wrapper">
+								<img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img-hero" loading="eager"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="deco-bottom"></div>
+			</section>
+			<section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-center">
+							<h2 class="title-lg text-center"><span class="text-red text-italic">Great</span> Work By <span class="text-red text-italic">Great</span> People</h2>
+							<p class="body-xl text-center">At Los Alamos Landscaping, we bring decades of expertise to both residential and commercial landscaping projects. From custom designs to year-round maintenance, our services include hardscaping, sod & seeding, irrigation, and more.</p>
+						</div>
+					</div>
+				</div>
+				<img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+			</section>
+			<section>
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+								<img src="/images/static/splash-pad.webp" alt="Pinon Park Splash Pad designed by Los Alamos Landscaping, featuring colorful play structures, water features, and stone accents surrounded by trees and a pavilion." class="img" loading="lazy" />
+							</div>
+							<div class="wrapper">
+								<h2 class="title-section">Proudly Rooted In <br class="mobile-hide"><span class="text-red">Los Alamos</span></h2>
+								<div class="body-wrapper">
+									<p class="body-txt">Our work goes beyond landscaping—it’s about making a difference in the community we’re proud to call home. From the Pinon Park Splash Pad to the San Ildefonso Pottery Replicas, every project reflects our dedication to enhancing Los Alamos for everyone to enjoy.</p>
+									<p class="body-txt">We’re also behind the Annual Flower Baskets that brighten Downtown each year and the Los Alamos Sound Wall, combining function and thoughtful design.</p>
+									<p class="body-txt">Whether it’s a small backyard or a large community space, we bring the same care and attention to every detail.</p>
+								</div>
+								<div class="btn-wrapper">
+									<a href="/estimate" class="btn-primary">Get an Estimate</a>
+									<a href="/services" class="btn-secondary">View Our Services</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<h2 class="title-section text-underline">Services</h2>
+						<ServiceGrid />
+					</div>
+				</div>
+				<img class="leaf-2" src="/images/assets/leaf-small_2.svg" alt="" role="presentation" loading="lazy"/>
+			</section>
+			<section class="section-dark">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-center">
+							<h2 class="title-section text-center text-underline-center">What Our Customers Say</h2>
+						</div>
+						<TestimonialGrid />
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="padding-large-bottom">
+					<div class="container">
+						<div class="wrapper">
+							<h2 class="title-section">Our <span class="text-red">Recent</span> Work</h2>
+						</div>
+						<div>
+							<PortfolioSlide/>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+								<h2 class="title-section">We Are A Team <br class="mobile-hide"><span class="text-red">Of Experts</span></h2>
+								<p class="body-txt">At Los Alamos Landscaping, we believe that great results start with a great team. With over two decades of experience, our dedicated professionals combine deep knowledge of the local environment with a passion for quality craftsmanship. From design to maintenance, we’re committed to providing landscaping solutions that enhance your outdoor space and simplify your life.</p>
+								<div class="body-wrapper">
+									<CheckHighlight
+										title="Local Knowledge"
+										description="Designs that thrive in New Mexico’s climate."
+									/>
+									<CheckHighlight
+										title="Craftsmanship"
+										description="Durable and detailed work you can rely on."
+									/>
+									<CheckHighlight
+										title="Full Services"
+										description="Design, irrigation, maintenance, and more."
+									/>
+								</div>
+								<div class="btn-wrapper">
+									<a href="/about" class="btn-primary">About Our Company</a>
+									<a href="/careers" class="btn-secondary">Join The Team</a>
+								</div>
+							</div>
+							<div class="wrapper-img">
+								<img src="/images/static/splash-pad.webp" alt="Pinon Park Splash Pad designed by Los Alamos Landscaping, featuring colorful play structures, water features, and stone accents surrounded by trees and a pavilion." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<img class="leaf-3" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+			</section>
+			<section class="section-dark">
+				<div class="padding-global">
+					<div class="container">
+						<h2 class="title-section text-center">Frequently <span class="text-red">Asked</span> Questions</h2>
+						<div class="faq">
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+							<FAQ
+							question="What services do you offer?"
+							answer="We offer a full range of landscaping services, including landscape design, hardscaping, irrigation, sod and seeding, lawn maintenance, and more." 
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section-relative">
+				<img class="leaf-4" src="/images/assets/leaf-small_2.svg" alt="" role="presentation" loading="lazy"/>
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-center">
+							<h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+							<div class="btn-wrapper center">
+								<a href="/estimate" class="btn-primary">Get an Estimate</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section-relative">
+				<div class="padding-short-bottom">
+					<div class="container">
+						<div class="wrapper-col">
+							<GetInTouch />
+							<div class="wrapper">
+								<img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="deco-bottom-short"></div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>

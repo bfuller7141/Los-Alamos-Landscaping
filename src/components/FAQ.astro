@@ -1,0 +1,103 @@
+---
+export interface FAQProps {
+    question: string;
+    answer: string;
+}
+
+const { question, answer } = Astro.props as FAQProps;
+---
+<div class="card-wrapper">
+    <div class="faq-item">
+        <div class="question-wrapper">
+            <h3 class="faq-question">{question}</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
+                <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
+              </svg>              
+        </div>
+        <div class="answer-wrapper">
+            <p class="body-text">{answer}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .question-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .faq-question {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--brown-500);
+        transition: all 0.2s ease;
+    }
+
+    .faq-icon {
+        width: 2rem;
+        height: auto;
+        color: var(--red-500);
+        transition: transform 0.3s ease;
+    }
+
+    .answer-wrapper {
+        height: 0; /* Initially hidden */
+        overflow: hidden;
+        transition: height 0.3s ease; /* Smoothly animate the height */
+    }
+
+    .faq-item:hover .faq-question {
+        color: var(--red-500);
+        transition: all 0.2s ease;
+    }
+</style>
+
+<script>
+
+document.querySelectorAll('.faq-item').forEach((faqItem, index, allFaqItems) => {
+    const questionWrapper = faqItem.querySelector('.question-wrapper');
+    const answerWrapper = faqItem.querySelector('.answer-wrapper') as HTMLElement;
+    const icon = faqItem.querySelector('.faq-icon') as HTMLImageElement;
+
+    // Initialize the height for all answer wrappers
+    if (answerWrapper) {
+        answerWrapper.style.height = '0px'; // Explicitly set the initial height
+    }
+
+    if (questionWrapper) {
+        questionWrapper.addEventListener('click', () => {
+            const isOpen = answerWrapper.style.height !== '0px'; // Check if the answer is open
+
+            // Close all other FAQ items
+            allFaqItems.forEach((otherFaqItem) => {
+                const otherAnswerWrapper = otherFaqItem.querySelector('.answer-wrapper') as HTMLElement;
+                const otherIcon = otherFaqItem.querySelector('.faq-icon') as HTMLImageElement;
+
+                if (otherAnswerWrapper && otherFaqItem !== faqItem) {
+                    otherAnswerWrapper.style.height = '0px'; // Close other answers
+                    if (otherIcon) {
+                        otherIcon.style.transform = 'rotate(0deg)'; // Reset other icons
+                    }
+                }
+            });
+
+            // Toggle the current FAQ item
+            if (isOpen) {
+                answerWrapper.style.height = '0px'; // Close this answer
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)'; // Reset this icon
+                }
+            } else {
+                const contentHeight = answerWrapper.scrollHeight; // Get the content's full height
+                answerWrapper.style.height = `${contentHeight}px`; // Open this answer
+                if (icon) {
+                    icon.style.transform = 'rotate(45deg)'; // Rotate this icon
+                }
+            }
+        });
+    }
+});
+</script>

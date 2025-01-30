@@ -1,0 +1,162 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import NavMain from "../../components/NavMain.astro";
+import TestimonialGrid from "../../components/TestimonialGrid.astro";
+import GetInTouch from "../../components/GetInTouch.astro";
+import FooterMain from "../../components/FooterMain.astro";
+import ServiceGrid from "../../components/ServiceGrid.astro";
+
+export const getStaticPaths = async () => {
+    const serviceEntries = await getCollection('services');
+    return serviceEntries.map((service: CollectionEntry<'services'>) => ({
+        params: { slug: service.slug }, 
+        props: service.data,
+    }));
+};
+
+interface GalleryItem {
+    image: string;
+    alt: string;
+}
+
+interface ServiceProps {
+    title: string;
+    pageTitle: string;
+    icon: string;
+    description: string;
+    btntxt: string;
+    about: string;
+    image: string;
+    alt: string;
+    imageTwo: string;
+    altTwo: string;
+    gallery?: GalleryItem[];
+    slug: string;
+}
+
+const { title, pageTitle, icon, description, btntxt, about, image, alt, imageTwo, altTwo, gallery, slug } = Astro.props as ServiceProps;
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={`Los Alamos Landscaping Services | ${title}`}
+            description={description}
+            keywords="landscaping, landscaping services, landscaping company, landscaping design, landscaping maintenance"
+            url={`https://losalamoslandscaping.com/services/${slug}`}
+        />
+    </head>
+    <NavMain />
+    <body>
+        <section class="hero">
+            <div class="padding-hero">
+                <div class="container">
+                    <div class="wrapper-col">
+                        <div class="wrapper hero-center">
+                            <p class="title-sm text-red">Los Alamos Landscaping Services</p>
+                            <h1 class="title-page">{pageTitle}</h1>
+                            <p class="body-txt">{description}</p>
+                            <div class="btn-wrapper">
+                                <a href="/estimate" class="btn-primary">Get an Estimate Today</a>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <img src={image} alt={alt} class="img-hero" loading="eager"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="deco-bottom"></div>
+        </section>
+        <section class="section-relative">
+            <div class="padding-global">
+                <div class="container">
+                    <div class="wrapper-col">
+                        <div class="wrapper">
+                            <img src={imageTwo} alt={altTwo} class="img" loading="lazy" />
+                        </div>
+                        <div class="wrapper">
+                            <h2 class="title-section">Brining Expertise <br class="mobile-hide"><span class="text-red">To Every Project</span></h2>
+                            <div class="body-wrapper">
+                                <p class="body-txt">{about}</p>
+                            </div>
+                            <div class="btn-wrapper">
+                                <a href="/estimate" class="btn-primary">Get an Estimate</a>
+                                <a href="/services" class="btn-secondary">View All Services</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+        </section>
+        {gallery && gallery.length > 0 && (
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <h2 class="title-section text-underline">Our Work in Action</h2>
+                        <div class="gallery-grid">
+                            {gallery.map((item, index) => (
+                                <div class="gallery-item">
+                                    <img
+                                        src={item.image}
+                                        alt={item.alt || `Image ${index + 1}`}
+                                        class="img"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </div> 
+                    </div>  
+                </div>
+            </section>
+          )}
+          <section class="section-relative">
+            <div class="padding-global">
+                <div class="container">
+                    <h2 class="title-section text-underline">Additional Services</h2>
+                    <ServiceGrid />
+                </div>
+            </div>
+            <img class="leaf-2" src="/images/assets/leaf-small_2.svg" alt="" role="presentation" loading="lazy"/>
+        </section>
+        <section class="section-dark">
+            <div class="padding-global">
+                <div class="container">
+                    <div class="wrapper-center">
+                        <h2 class="title-section text-center text-underline-center">What Our Customers Say</h2>
+                    </div>
+                    <TestimonialGrid />
+                </div>
+            </div>
+        </section>
+        <section class="section-relative">
+            <div class="padding-large-top">
+                <div class="container">
+                    <div class="wrapper-center">
+                        <h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+                        <div class="btn-wrapper center">
+                            <a href="/estimate" class="btn-primary">Get an Estimate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-relative">
+            <div class="padding-short-bottom">
+                <div class="container">
+                    <div class="wrapper-col">
+                        <GetInTouch />
+                        <div class="wrapper">
+                            <img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="deco-bottom-short"></div>
+        </section>
+    </main>
+    <FooterMain />
+</body>
+</html>

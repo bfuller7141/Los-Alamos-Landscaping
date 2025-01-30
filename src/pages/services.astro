@@ -1,0 +1,128 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import CheckHighlight from "../components/CheckHighlight.astro";
+import FooterMain from "../components/FooterMain.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import NavMain from "../components/NavMain.astro";
+import ServiceGrid from "../components/ServiceGrid.astro";
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Services | Los Alamos Landscaping & More | Expert Landscaping in NM"
+            description="Explore the wide range of landscaping services offered by Los Alamos Landscaping & More. From design to maintenance, we bring your outdoor vision to life in New Mexico."
+            keywords="Landscaping Services NM, Outdoor Design NM, Lawn Maintenance NM, Los Alamos Landscaping Services"
+            image="/opengraph/og-services.jpg"
+            url="https://losalamoslandscaping.com/services"
+        />
+    </head>
+    <body>
+        <header>
+            <NavMain />
+        </header>
+        <main>
+            <section class="hero">
+                <div class="padding-hero-xlbottom">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h1 class="title-sm text-red text-center">Los Alamos Landscaping Services</h1>
+                            <h2 class="title-page text-center">Your Trusted Local <br class="mobile-hide"><span class="text-red">Landsaping Experts</span></h2>
+                            <p class="body-txt text-center">For over 20 years, Los Alamos Landscaping & More has been the trusted choice for transforming outdoor spaces in Los Alamos and White Rock. We combine local expertise with a passion for creating landscapes that thrive in New Mexico’s unique climate. From custom designs and efficient irrigation to hardscaping, sod, and vibrant plantings, we deliver solutions that are as beautiful as they are functional. Whether it’s your home or business, we’re here to bring your outdoor vision to life with quality, care, and a neighborly touch.</p>
+                            <div class="btn-wrapper">
+                                <a href="/estimate" class="btn-primary">Get An Estimate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+								<img src="/images/static/splash-pad.webp" alt="Pinon Park Splash Pad designed by Los Alamos Landscaping, featuring colorful play structures, water features, and stone accents surrounded by trees and a pavilion." class="img" loading="lazy" />
+							</div>
+							<div class="wrapper">
+								<h2 class="title-section">Comprehensive <br class="mobile-hide"><span class="text-red">Landscape Service</span></h2>
+								<div class="body-wrapper">
+									<p class="body-txt">At Los Alamos Landscaping & More, we offer a full range of services to transform your outdoor spaces into something truly special. Whether you’re looking to design a brand-new landscape, install efficient irrigation, or add hardscaping features like patios and walkways, our team has the expertise to bring your vision to life. We also specialize in sod and seeding, vibrant trees and plants, and custom decks and patios—perfectly tailored to thrive in New Mexico’s unique climate. From residential backyards to commercial properties, we’re here to handle every detail with care, quality, and a personal touch. Let us help you create an outdoor space that’s as functional as it is beautiful.</p>
+								</div>
+								<div class="btn-wrapper">
+									<a href="/estimate" class="btn-primary">Get an Estimate</a>
+									<a href="/services" class="btn-secondary">About Our Company</a>
+								</div>
+							</div>
+						</div>
+                        <div class="pad-top">
+                            <ServiceGrid />
+                        </div>
+					</div>
+				</div>
+                <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            <section>
+                <div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+								<h2 class="title-section">Experience You <br class="mobile-hide"><span class="text-red">Can Trust</span></h2>
+								<p class="body-txt">For over 20 years, Los Alamos Landscaping & More has been the go-to choice for homeowners and businesses in Los Alamos and White Rock. We combine local expertise, quality craftsmanship, and a deep commitment to our community to deliver outdoor spaces that are as functional as they are beautiful. When you choose us, you’re choosing a team that cares about your vision and works tirelessly to bring it to life.</p>
+								<div class="body-wrapper">
+									<CheckHighlight
+										title="Local Knowledge"
+										description="Designs that thrive in New Mexico’s climate."
+									/>
+									<CheckHighlight
+										title="Craftsmanship"
+										description="Durable and detailed work you can rely on."
+									/>
+									<CheckHighlight
+										title="Community Focus"
+										description="Proudly serving Los Alamos since 1999."
+									/>
+								</div>
+								<div class="btn-wrapper">
+									<a href="/about" class="btn-primary">About Our Company</a>
+									<a href="/careers" class="btn-secondary">Join The Team</a>
+								</div>
+							</div>
+							<div class="wrapper-img">
+								<img src="/images/static/splash-pad.webp" alt="Pinon Park Splash Pad designed by Los Alamos Landscaping, featuring colorful play structures, water features, and stone accents surrounded by trees and a pavilion." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+            </section>
+            <section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-center">
+							<h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+							<div class="btn-wrapper center">
+								<a href="/estimate" class="btn-primary">Get an Estimate</a>
+							</div>
+						</div>
+					</div>
+				</div>
+                <img class="leaf-3" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+			</section>
+			<section class="section-relative">
+				<div class="padding-short-bottom">
+					<div class="container">
+						<div class="wrapper-col">
+							<GetInTouch />
+							<div class="wrapper">
+								<img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="deco-bottom-short"></div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>

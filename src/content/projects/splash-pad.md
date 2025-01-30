@@ -1,0 +1,23 @@
+---
+title: "Pinon Park Splash Pad"
+description: "The Pinon Park Splash Pad in White Rock is a vibrant community space designed to bring families together during the warm months. Completed in collaboration with Los Alamos County and local artist Abby Feldman, this project was part of a larger Recreation Capital Outlay initiative. Los Alamos Landscaping & More proudly constructed the splash pad, which features a flow-through water system that minimizes maintenance costs while maximizing fun. Located near the Youth Activity Center and White Rock Library, the splash pad offers a safe, refreshing space for children to play while parents relax in shaded areas."
+image: "/images/uploads/splash_main-img.webp"
+mainAlt: "A young child standing under a cascading water feature at the splash pad."
+imageTwo: "/images/uploads/splash_imgTwo.webp"
+altTwo: "Wide view of the Pinon Park Splash Pad with colorful flooring and multiple water jets."
+about: "At Los Alamos Landscaping & More, we take pride in creating spaces that bring people together and enhance the community. The Pinon Park Splash Pad is a perfect example of this commitment, blending thoughtful design with sustainable practices. Working closely with Los Alamos County, local artist Abby Feldman, and community stakeholders, we constructed a vibrant, family-friendly space that’s both fun and functional. From the innovative flow-through water system to the shaded seating areas, every detail was designed to provide a safe, enjoyable experience for families while reflecting the unique character of White Rock."
+articleLink: "https://losalamosreporter.com/2021/06/11/white-rock-pinon-splash-pad-now-open-to-the-public/"
+gallery:
+  - image: "/images/uploads/splash_img-1.webp"
+    alt: "Large tipping bucket at the splash pad, surrounded by fountains and play features."
+  - image: "/images/uploads/splash_img-2.webp"
+    alt: Newly planted trees and landscaping in progress at Pinon Park Splash Pad."
+  - image: "/images/uploads/splash_img-3.webp"
+    alt: "Construction worker smoothing concrete surface for the splash pad foundation."
+  - image: "/images/uploads/splash_img-4.webp"
+    alt: "Completed splash pad area with colorful play equipment and shade structures."
+  - image: "/images/uploads/splash_img-5.webp"
+    alt: "Pinon Park Splash Pad with water features spraying in multiple directions."
+  - image: "/images/uploads/splash_img-6.webp"
+    alt: "Child playing under a large water bucket at Pinon Park Splash Pad."
+---

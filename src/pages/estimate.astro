@@ -1,0 +1,43 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FooterMain from "../components/FooterMain.astro";
+import EstimateForm from "../components/Forms/EstimateForm.astro";
+import NavMain from "../components/NavMain.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title= "Los Alamos Landscaping | Get an Estimate"
+            description= "Get an estimate for your landscaping project from Los Alamos Landscaping & More. We offer expert landscaping services in Los Alamos and White Rock, NM, including landscape design, hardscaping, irrigation, and more."
+            keywords="landscaping, landscaping services, landscaping company, landscaping design, landscaping maintenance"
+            url="https://losalamoslandscaping.com/estimate"
+        />
+        <script src="/datedropper-javascript.js" is:inline></script>
+    </head>
+    <NavMain />
+    <body>
+        <main>
+            <section class="hero">
+                <div class="padding-hero-xlbottom">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-page text-center">Get An <span class="text-red">Estimate</span></h2>
+                            <p class="body-txt text-center">Ready to start your landscaping project? Fill out the form below to request an estimate, and our team will review your details and get back to you as soon as possible. Whether you're planning a new design, irrigation system, or hardscaping project, we’re here to help bring your vision to life with expert care and craftsmanship.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <EstimateForm />
+                    </div>
+                </div>
+            </section>
+		</main>
+		<FooterMain />
+	</body>
+</html>

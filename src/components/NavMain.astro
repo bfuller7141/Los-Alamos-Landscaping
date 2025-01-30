@@ -1,0 +1,357 @@
+<nav class="nav-main">
+    <div class="padding-nav">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="nav-left">
+                    <div class="nav-logo">
+                        <a href="/" aria-label="go to home page" class="logo-link">
+                            <img src="/images/logos/lalam-logo_main.svg" alt="Los Alamos Landscaping & More primary logo" loading="eager" />
+                        </a>
+                    </div>
+                    <div class="menu-wrap">
+                        <ul class="nav-list">
+                            <li class="nav-link"><a href="/">Home</a></li>
+                            <li class="nav-link"><a href="/services">Services</a></li>
+                            <li class="nav-link"><a href="/about">About</a></li>
+                            <li class="nav-link"><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <a href="tel:(505) 662-6234" class="nav-link hide-tab">(505) 662-6234</a>
+                    <a href="https://losalamoslandsca.securepayments.cardpointe.com/pay?" target="_blank" class="btn-brown short hide-mobile">Pay My Bill</a>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu" aria-hidden="true">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-link"><a href="/services">Services</a></li>
+            <li class="mobile-nav-link"><a href="/about">About</a></li>
+            <li class="mobile-nav-link"><a href="/contact">Contact</a></li>
+            <li class="mobile-nav-link"><a href="https://losalamoslandsca.securepayments.cardpointe.com/pay?" target="_blank" class="mobile-btn">Pay My Bill</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    .nav-main {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .padding-nav {
+        padding-left: var(--side);
+        padding-right: var(--side);
+        padding-top: var(--nav);
+        padding-bottom: 0.5rem;
+        transition: padding 0.5s ease;
+    }
+
+    .nav-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-left {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-logo {
+        flex: 1;
+        min-width: 12rem;
+        max-width: 12rem;
+    }
+
+    .nav-logo img {
+        margin: -1rem 0 0 0;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        list-style: none;
+        text-decoration: none;
+        color: var(--brown-500);
+        font-size: 1.125rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+        color: var(--red-500);
+        transition: all 0.3s ease;
+    }
+    .nav-link a {
+        padding: 0.125rem 0.5rem;
+        text-decoration: none;
+        color: var(--brown-500);
+        transition: all 0.3s ease;
+    }
+    .nav-link a:hover {
+        color: var(--red-500);
+        transition: all 0.3s ease;
+    }
+    .menu-wrap {
+        display: flex;
+    }
+
+    .nav-link a.active {
+        color: var(--red-500);
+        font-weight: bold;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 0.25rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 3rem;
+        right: 1.25rem;
+        z-index: 1100;
+        transition: top 0.4s ease;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 1.5rem;
+        height: 0.19rem;
+        border-radius: 2px;
+        background-color: var(--brown-500);
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger-to-X Animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(0.25rem, 0.25rem);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(0.35rem, -0.35rem);
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 1rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.95);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .mobile-menu.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+    }
+
+    .mobile-nav-list {
+        list-style: none;
+        padding: 1rem;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mobile-nav-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .mobile-btn {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 700;
+        font-size: var(--title-xs);
+        text-decoration: none;
+        color: var(--white) !important;
+        background-color: var(--red-500);
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.75rem 2rem;
+        cursor: pointer;
+        transition: background-color ease-in-out 0.25s;
+        box-sizing: border-box;
+    }
+
+    .mobile-nav-link a {
+        display: block;
+        padding: 1rem;
+        margin: 1rem 0 0 0;
+        width: 100%;
+        text-decoration: none;
+        color: var(--brown-500);
+        font-size: 1.25rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-link a:hover {
+        color: var(--red-500);
+    }
+
+    /* Prevent scrolling */
+    .no-scroll {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    /* Responsive Behavior */
+    @media screen and (max-width: 1020px) {
+        .hide-tab {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .hide-mobile {
+            display: none;
+        }
+
+        .menu-wrap {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .nav-logo img {
+            max-width: 10rem;
+        }
+    }
+
+    /* Scroll-Specific Styles */
+    .nav-main.scrolled {
+        margin-top: 0;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.4s ease, box-shadow 0.4s ease, margin-top 0.4s ease;
+    }
+
+    .nav-main.scrolled .nav-logo img {
+        margin: 0.5rem 0 0 0;
+        max-width: 10rem;
+    }
+
+    .nav-main.scrolled .padding-nav {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        transition: padding 0.4s ease;
+    }
+
+    .nav-main.scrolled .hamburger {
+        top: 1rem;
+    }
+</style>
+
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const body = document.body;
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('active');
+            mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+            hamburger.classList.toggle('active');
+
+            if (isOpen) {
+                body.classList.add('no-scroll');
+            } else {
+                body.classList.remove('no-scroll');
+            }
+        });
+    }
+
+    const navbar = document.querySelector('.nav-main');
+    const logo = document.querySelector('.nav-logo img');
+    const originalLogo = '/images/logos/lalam-logo_main.svg';
+    const scrolledLogo = '/images/logos/lalam-logo_wordmark.svg';
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (navbar) {
+            if (scrollTop > 0) {
+                navbar.classList.add('scrolled');
+                if (logo) (logo as HTMLImageElement).src = scrolledLogo;
+
+                // Ensure the hamburger is positioned correctly on scroll
+                if (hamburger) {
+                    (hamburger as HTMLElement).style.top = '1rem';
+                }
+            } else {
+                navbar.classList.remove('scrolled');
+                if (logo) (logo as HTMLImageElement).src = originalLogo;
+
+                // Reset the hamburger position
+                if (hamburger) {
+                    (hamburger as HTMLElement).style.top = '3rem'; // Default top position
+                }
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentPath = window.location.pathname;
+
+        // Desktop Navigation
+        const navLinks = document.querySelectorAll(".nav-link a");
+        navLinks.forEach((link) => {
+            if (link.getAttribute("href") === currentPath) {
+                link.classList.add("active");
+            }
+        });
+
+        // Mobile Navigation
+        const mobileLinks = document.querySelectorAll(".mobile-nav-link a");
+        mobileLinks.forEach((link) => {
+            if (link.getAttribute("href") === currentPath) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>

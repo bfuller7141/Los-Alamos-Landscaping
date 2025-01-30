@@ -1,0 +1,246 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+type ServiceFrontmatter = {
+  title: string;
+  icon: string;
+  description: string;
+  btntxt: string;
+};
+
+const services = import.meta.glob('../content/services/*.md', { eager: true }) as Record<string, { frontmatter: ServiceFrontmatter }>;
+
+type Service = {
+  frontmatter: {
+    title: string;
+    icon: string;
+    description: string;
+    btntxt: string;
+  };
+  slug: string;
+};
+
+const parsedServices: Service[] = Object.entries(services).map(([path, service]) => {
+  return {
+    ...service,
+    slug: path.split('/').pop()?.replace('.md', '') || '',
+  };
+});
+---
+<div class="service-container">
+  <ul class="service-grid">
+    {parsedServices.map((service) => (
+      <li>
+        <ServiceCard
+          title={service.frontmatter.title}
+          icon={service.frontmatter.icon}
+          description={service.frontmatter.description}
+          btntxt={service.frontmatter.btntxt}
+          slug={`/services/${service.slug}`}
+        />
+      </li>
+    ))}
+  </ul>
+
+  <div class="service-slider">
+    <div class="service-slider-wrapper">
+      {parsedServices.map((service) => (
+        <div class="service-card-wrapper">
+          <ServiceCard
+            title={service.frontmatter.title}
+            icon={service.frontmatter.icon}
+            description={service.frontmatter.description}
+            btntxt={service.frontmatter.btntxt}
+            slug={`/services/${service.slug}`}
+          />
+        </div>
+      ))}
+    </div>
+    <div class="slider-dots">
+      {parsedServices.map((_, index) => (
+        <div class="dot" data-index={index}></div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+<style>
+/* Grid Layout for Larger Screens */
+    .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    }
+
+    .service-grid li {
+    position: relative;
+    padding: 0;
+    }
+
+    .service-grid li:not(:nth-last-child(-n+3))::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    }
+
+    .service-grid li:not(:nth-child(3n))::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+    }
+
+    @media screen and (max-width: 1263px) {
+    .service-grid li:not(:nth-last-child(-n+2))::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+    }
+
+    .service-grid li:nth-child(3)::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+    }
+
+    .service-grid li:nth-child(2)::before,
+    .service-grid li:nth-child(4)::before {
+        display: none;
+    }
+    }
+
+/* Slider Layout for Smaller Screens */
+    @media screen and (max-width: 842px) {
+    .service-grid {
+        display: none;
+    }
+
+    .service-slider {
+        display: block;
+        overflow: hidden;
+    }
+
+    .service-slider-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        scroll-behavior: smooth;
+    }
+
+    .service-card-wrapper {
+        flex: 0 0 auto;
+        width: 90%;
+        scroll-snap-align: center;
+        box-sizing: border-box;
+    }
+
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--red-100);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background-color: var(--red-500);
+    }
+    }
+/* Hide service-slider for larger screens */
+  @media screen and (min-width: 843px) {
+    .service-slider {
+      display: none;
+    }
+  }
+
+/* Show service-slider and hide scrollbar */
+  @media screen and (max-width: 842px) {
+    .service-slider {
+      display: block;
+      overflow: hidden;
+    }
+
+    .service-slider-wrapper {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .service-slider-wrapper::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sliderWrapper = document.querySelector('.service-slider-wrapper');
+  const dots = document.querySelectorAll('.dot');
+
+  if (!sliderWrapper || !dots.length) return;
+
+  const updateActiveDot = () => {
+    const scrollLeft = sliderWrapper.scrollLeft;
+    const cardElement = sliderWrapper.querySelector('.service-card-wrapper');
+    if (!cardElement) return;
+
+    const cardWidth = (cardElement as HTMLElement).offsetWidth;
+    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === activeIndex);
+    });
+  };
+
+  sliderWrapper.addEventListener('scroll', updateActiveDot);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      const cardElement = sliderWrapper.querySelector('.service-card-wrapper');
+      if (!cardElement) return;
+
+      const cardWidth = (cardElement as HTMLElement).offsetWidth;
+      sliderWrapper.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth',
+      });
+    });
+  });
+
+  // Initialize active dot
+  updateActiveDot();
+});
+</script>
