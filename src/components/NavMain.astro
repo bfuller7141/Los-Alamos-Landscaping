@@ -354,4 +354,24 @@
             }
         });
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    let currentPath = window.location.pathname.replace(/\/$/, ""); 
+
+    // Desktop Navigation
+    document.querySelectorAll(".nav-link a").forEach((link) => {
+        let linkPath = link.getAttribute("href")?.replace(/\/$/, ""); 
+        if (linkPath === currentPath) {
+            link.classList.add("active");
+        }
+    });
+
+    // Mobile Navigation
+    document.querySelectorAll(".mobile-nav-link a").forEach((link) => {
+        let linkPath = link.getAttribute("href")?.replace(/\/$/, "");
+        if (linkPath === currentPath) {
+            link.classList.add("active");
+        }
+    });
+});
 </script>
