@@ -52,7 +52,7 @@
     --sm-vertical: clamp(2rem, 5vw, 2rem);
     --hero: clamp(4rem, 14rem, 5rem);
     --hero-md: clamp(6rem, 14rem, 8rem);
-    --hero-lg: clamp(8rem, 14rem, 10rem);
+    --hero-lg: clamp(10rem, 14rem, 12rem);
     --small: 0.25rem;
     --nav: 1.5rem;
 }
