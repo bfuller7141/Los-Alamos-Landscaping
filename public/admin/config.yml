@@ -29,7 +29,7 @@ collections:
       - {label: "Alt Text", name: "alt", widget: "string"}
       - {label: "About Image", name: "imageTwo", widget: "image"}
       - {label: "Alt Text", name: "altTwo", widget: "string"}
-      - {label: "Gallery", name: "gallery", widget: "list", fields: [{label: "Image", name: "image", widget: "image"}{label: "Image Description", name: "alt", widget: "text"}]}
+      - {label: "Gallery", name: "gallery", widget: "list", fields: [{label: "Image", name: "image", widget: "image"}, {label: "Image Description", name: "alt", widget: "text"}]}
 
   - name: "testimonials"
     label: "Testimonials"
