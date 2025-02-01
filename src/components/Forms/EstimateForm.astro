@@ -9,9 +9,9 @@ import StateDropdown from "./StateDropdown.astro";
         <input type="text" name="bot-field" id="bot-field" />
      </div>
      <!-- Subject Line -->
-     <input type="hidden" name="_subject" value="New Estimate Request from {first-name} {last-name}">
+     <input type="hidden" name="subject" value="New Estimate Request from %{first-name} %{last-name}">
 
-     
+
     <div class="form-group">
         <label for="submission-date">Submission Date:</label>
         <input class="short" type="date" id="submission-date" name="submission-date" readonly />
