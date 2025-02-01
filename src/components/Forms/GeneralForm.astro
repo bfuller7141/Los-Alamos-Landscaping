@@ -1,4 +1,4 @@
-<form id="contact-form" class="form-wrap" action="/thankyou" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="updateSubject()" name="Contact Form">
+<form id="contact-form" class="form-wrap" action="/thankyou" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return updateSubject()" name="Contact Form">
     <!-- Honey Pot -->
      <div class="hidden" style="display: none;">
         <label for="bot-field">Don’t fill this out if you're human:</label>
@@ -6,7 +6,7 @@
      </div>
 
      <!-- Subject Line -->
-     <input type="hidden" name="subject" value="">
+     <input type="hidden" id="subject" name="subject" value="">
 
     <div class="horizontal-group">
         <div class="form-group">
@@ -220,15 +220,19 @@
 
 <script>
     function updateSubject() {
-      const firstNameElement = document.getElementById("first-name");
-      const lastNameElement = document.getElementById("last-name");
-      const firstName = firstNameElement ? (firstNameElement as HTMLInputElement).value : '';
-      const lastName = lastNameElement ? (lastNameElement as HTMLInputElement).value : '';
-      const subjectField = document.querySelector("input[name='subject']");
+      // Get the input elements safely
+      const firstNameElement = document.getElementById("first-name") as HTMLInputElement | null;
+      const lastNameElement = document.getElementById("last-name") as HTMLInputElement | null;
+      const subjectField = document.getElementById("subject") as HTMLInputElement | null;
   
-      // Set dynamic subject
-      if (subjectField) {
-        (subjectField as HTMLInputElement).value = `New Contact Submission from ${firstName} ${lastName}`;
+      // Ensure all elements exist before accessing .value
+      if (firstNameElement && lastNameElement && subjectField) {
+        const firstName = firstNameElement.value.trim();
+        const lastName = lastNameElement.value.trim();
+        subjectField.value = `New Contact Submission from ${firstName} ${lastName}`;
       }
+  
+      // Allow the form to submit
+      return true;
     }
   </script>
