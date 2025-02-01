@@ -17,11 +17,23 @@ const {title, description, keywords, image, url} = Astro.props as BaseHeadProps;
 
 <link rel="canonical" href={url || "https://losalamoslandscaping.com"} />
 
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url || "https://losalamoslandscaping.com"} />
+<meta property="og:title" content={title || "Los Alamos Landscaping & More"} />
+<meta property="og:description" content={description || "Los Alamos Landscaping & More"} />
+<meta property="og:image" content={image || "/images/opengraph/opengraph-lalam.webp"} />
+
 <!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <!-- Styles -->
 <link rel="stylesheet" href="/styles/global.css" />
 <link rel="stylesheet" href="/styles/root.css" />
+<meta name="theme-color" content="#F1F1F2" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

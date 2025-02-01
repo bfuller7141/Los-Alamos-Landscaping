@@ -18,6 +18,7 @@ export const getStaticPaths = async () => {
 interface GalleryItem {
     image: string;
     alt: string;
+    credit?: string;
 }
 
 interface ProjectProps {
@@ -27,13 +28,14 @@ interface ProjectProps {
     mainAlt: string;
     imageTwo: string;
     altTwo: string;
+    creditTwo: string;
     about: string;
     gallery?: GalleryItem[];
     articleLink: string;
     slug: string;
 }
 
-const { title, description, image, imageTwo, mainAlt, altTwo, about, gallery, articleLink, slug } = Astro.props as ProjectProps;
+const { title, description, image, imageTwo, creditTwo, mainAlt, altTwo, about, gallery, articleLink, slug } = Astro.props as ProjectProps;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -65,14 +67,15 @@ const { title, description, image, imageTwo, mainAlt, altTwo, about, gallery, ar
                     </div>
                 </div>
             </div>
-            <div class="deco-bottom"></div>
+            <div class="deco-bottom-short"></div>
         </section>
         <section class="section-relative">
-            <div class="padding-global">
+            <div class="padding-large-top">
                 <div class="container">
                     <div class="wrapper-col">
                         <div class="wrapper">
                             <img src={imageTwo} alt={altTwo} class="img" loading="lazy" />
+                            {creditTwo && <p class="body-sm">{creditTwo}</p>}
                         </div>
                         <div class="wrapper">
                             <h2 class="title-section">Brining Expertise <br class="mobile-hide"><span class="text-red">To Every Project</span></h2>
@@ -109,6 +112,7 @@ const { title, description, image, imageTwo, mainAlt, altTwo, about, gallery, ar
                                         class="img"
                                         loading="lazy"
                                     />
+                                    {item.credit && <p class="body-sm">{item.credit}</p>}
                                 </div>
                             ))}
                         </div> 
@@ -153,7 +157,7 @@ const { title, description, image, imageTwo, mainAlt, altTwo, about, gallery, ar
                     <div class="wrapper-col">
                         <GetInTouch />
                         <div class="wrapper">
-                            <img src="/images/static/2017+baskets.webp" alt="Los Alamos Landscaping team arranging vibrant hanging flower baskets in a sunny parking lot, surrounded by trucks and lush trees in the background." class="img" loading="lazy" />
+                            <img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
                         </div>
                     </div>
                 </div>

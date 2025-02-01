@@ -52,6 +52,7 @@ const projectsCollection = defineCollection({
     mainAlt: z.string(),
     imageTwo: z.string(),
     altTwo: z.string(),
+    creditTwo: z.string().optional(),
     about: z.string().optional(),
     articleLink: z.string().optional(),
     gallery: z
@@ -59,6 +60,7 @@ const projectsCollection = defineCollection({
         z.object({
           image: z.string(),
           alt: z.string(),
+          credit: z.string().optional(),
         })
       )
       .optional(),

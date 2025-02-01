@@ -185,7 +185,7 @@ body {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem 2rem;
     margin-top: 1.5rem;
 }
 
