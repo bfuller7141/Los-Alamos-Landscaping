@@ -1,0 +1,57 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FooterMain from "../components/FooterMain.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import NavMain from "../components/NavMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Los Alamos Landscaping | Application Submitted"
+            description="Thank you for submitting your application to Los Alamos Landscaping."
+            keywords="landscaping jobs, landscaping careers, Los Alamos jobs, landscaping employment"
+            url="https://losalamoslandscaping.com/thankyou-job"
+        />
+    </head>
+    <NavMain />
+    <body>
+        <main>
+            <section class="hero">
+                <div class="padding-hero">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-page text-center">Thank You for <br><span class="text-red">Your Application</span></h2>
+                            <p class="body-txt text-center">
+                                We appreciate your interest in joining Los Alamos Landscaping & More.
+                                Our team will review your application, and if there is a good fit, we will contact you soon.
+                            </p>
+                            <div class="btn-wrapper">
+                                <a href="/" class="btn-primary">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-short-bottom">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <GetInTouch />
+                            <div class="wrapper">
+                                <img src="/images/static/lalam-team.webp" 
+                                    alt="Los Alamos Landscaping team members working together on a landscaping project."
+                                    class="img"
+                                    loading="lazy" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+        </main>
+        <FooterMain />
+    </body>
+</html>

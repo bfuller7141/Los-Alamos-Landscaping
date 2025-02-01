@@ -1,0 +1,284 @@
+<form id="job-application" class="form-wrap" action="/thankyou-job" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return updateSubject()" name="Job Application">
+    <!-- Honey Pot -->
+     <div class="hidden" style="display: none;">
+        <label for="bot-field">Don’t fill this out if you're human:</label>
+        <input type="text" name="bot-field" id="bot-field" />
+     </div>
+
+     <!-- Subject Line -->
+     <input type="hidden" id="subject" name="subject" value="">
+
+    <div class="horizontal-group">
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="first-name" placeholder="John" required autocomplete="given-name" />
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" name="last-name" id="last-name" placeholder="Doe" required autocomplete="family-name" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="jdoe@email.com" required autocomplete="email" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" name="phone" id="phone" placeholder="505-555-5555" required autocomplete="tel" />
+    </div>
+    <div class="form-group file-upload-group">
+        <div class="custom-file-input">
+            <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx" required />
+            <label for="resume" class="btn-secondary">Upload Completed Application</label>
+            <span id="file-name">No file chosen</span>
+        </div>
+        <p class="body-sm text-gray">Accepted formats: .PDF, .DOC, .DOCX</p>
+    </div>
+    <div class="btn-wrapper">
+        <button type="submit" class="btn-primary btn-form">Submit Application</button>
+    </div>
+</form>
+
+<style>
+    .btn-form {
+        max-width: fit-content;
+    }
+    .hidden {
+        display: none;
+    }
+    .margin-top {
+        margin-top: 2rem;
+    }
+    .form-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 80%;
+        margin: 2rem auto;
+    }
+    .horizontal-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.5rem;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    label {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 600;
+        font-size: var(--fs-body);
+        color: var(--gray-500);
+        margin: 0;
+    }
+    input {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        padding: 0.5rem;
+        border: 2px solid var(--gray-300);
+        background-color: var(--full-white);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+    }
+    .short {
+        max-width: calc(50% - 2.5rem);
+    }
+
+    input:hover,
+    input:focus-visible,
+    input:focus {
+        outline: none;
+        border-color: var(--red-500);
+        transition: all 0.2s ease-in-out;
+    }
+    input::placeholder {
+        color: var(--gray-400);
+    }
+    select {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        padding: 0.5rem;
+        border: 2px solid var(--gray-300);
+        background-color: var(--full-white);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        appearance: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    select:hover,
+    select:focus-visible,
+    select:focus {
+        outline: none;
+        border-color: var(--red-500);
+        background-color: var(--full-white);
+        transition: all 0.2s ease-in-out;
+    }
+
+    select option:checked {
+        background-color: #EE3524; 
+        color: var(--full-white);
+    }
+
+    select {
+        background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1rem;
+        padding-right: 2rem;
+    }
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .currency-symbol {
+        position: absolute;
+        left: 0.75rem;
+        font-size: var(--fs-body);
+        color: var(--gray-500);
+        pointer-events: none;
+    }
+
+    input[type="number"] {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        border: 2px solid var(--gray-300);
+        background-color: var(--full-white);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        -moz-appearance: textfield; 
+        width: 100%;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"]:hover,
+    input[type="number"]:focus-visible,
+    input[type="number"]:focus {
+        outline: none;
+        border-color: var(--red-500);
+        transition: all 0.2s ease-in-out;
+    }
+
+    textarea {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        padding: 0.5rem;
+        border: 2px solid var(--gray-300);
+        background-color: var(--full-white);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        resize: vertical;
+        width: 100%;
+        min-height: 10rem;
+    }
+    textarea:hover,
+    textarea:focus-visible,
+    textarea:focus {
+        outline: none;
+        border-color: var(--red-500);
+        transition: all 0.2s ease-in-out;
+    }
+
+/* Custom File Upload Styling */
+.file-upload-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.custom-file-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Hide the default file input */
+input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Styled File Upload Button */
+.custom-file-input label {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: var(--title-xs);
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--brown-500);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer; 
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    text-align: center;
+    user-select: none;
+}
+
+/* Ensure the label is clickable */
+.custom-file-input label:active,
+.custom-file-input label:focus {
+    outline: none;
+}
+
+/* Hover effect */
+.custom-file-input label:hover {
+    background-color: var(--red-500);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Display Selected File Name */
+#file-name {
+    font-family: 'Rubik', sans-serif;
+    font-size: var(--fs-body);
+    color: var(--gray-500);
+}
+
+/* Calendar Styles */
+    :root {
+        --dd-overlay: rgba(0, 0, 0, .75);
+        --dd-background: #FFFFFF;
+        --dd-text1: #423937;
+        --dd-text2: #ffffff;
+        --dd-primary: #EE3524;
+        --dd-gradient: linear-gradient(45deg, #EE3524 0%, #BE2A1D 100%);
+        --dd-radius: .35em;
+        --dd-shadow: 0 0 2.5em rgba(0, 0, 0, 0.1);
+        --dd-range: #F5867C;
+    }
+
+/* Responsive Styles */
+    @media (max-width: 768px) {
+        .form-wrap {
+            width: 100%;
+        }
+        .horizontal-group {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .short {
+            max-width: 100%;
+        }
+    }
+</style>

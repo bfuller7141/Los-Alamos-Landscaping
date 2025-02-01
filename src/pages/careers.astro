@@ -1,0 +1,104 @@
+---
+// src/pages/about.astro
+
+import BaseHead from '../components/BaseHead.astro';
+import NavMain from '../components/NavMain.astro';
+import CheckHighlight from '../components/CheckHighlight.astro';
+import GetInTouch from '../components/GetInTouch.astro';
+import FooterMain from '../components/FooterMain.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import ApplicationForm from '../components/Forms/ApplicationForm.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="About Los Alamos Landscaping & More | Join Our Growing Team"
+            description="Looking for a rewarding career in landscaping? Learn more about Los Alamos Landscaping & More, a local landscaping company in Los Alamos, NM, and discover our current job openings."
+            keywords="About Los Alamos Landscaping, Landscaping Company NM, Local Landscapers, NM Landscape Experts, NM Landscaping Jobs, NM Landscaping Careers"
+            url="https://losalamoslandscaping.com/careers"
+        />
+        <script src="/scripts/appUpload.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <NavMain />
+        </header>
+        <main>
+            <section class="hero">
+                <div class="padding-hero">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h1 class="title-sm text-red text-center">Los Alamos Landscaping Careers</h1>
+                            <h2 class="title-page text-center">Join Our Growing <br class="mobile-hide"><span class="text-red">Team Of Landscapers</span></h2>
+                            <img class="img-hero-center" src="/images/static/lalam-team_full.webp" alt="Los Alamos Landscaping team posing together outdoors, wearing safety vests and work gear, with a black lab at the center." loading="lazy"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom"></div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-large-top">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-section text-center">Join Our <span class="text-red">Team</span></h2>
+                            <p class="body-txt text-center">We’re always looking for hardworking, reliable, and passionate individuals to be part of Los Alamos Landscaping & More. Whether you have years of experience or are eager to learn, we believe in building a strong team that takes pride in their work and their community. At Los Alamos Landscaping, we do more than transform outdoor spaces—we create meaningful projects that make a lasting impact. From installing the Annual Flower Baskets downtown to building spaces like the Pinon Park Splash Pad.</p>
+                            <p class="body-txt text-center">If you're ready to grow with us, click below to download our job application and take the first step toward a rewarding career.</p>
+                            <div class="btn-wrapper center">
+                                <a href="/downloads/LALAM-Job-Application.pdf" class="btn-primary" target="_blank">Download Application</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            
+            <section>
+                <div class="padding-short-top">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <p class="body-txt text-center">Please fill out the form below and upload your completed application.</p>
+                            <ApplicationForm />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="padding-short-top">
+                    <div class="container">
+                        <div class="img-wrapper-center">
+                            <img src="/images/static/lalam-team-outing-1.webp" alt="Los Alamos Landscaping team attending a training or meeting in a conference room, standing and seated while engaging with a presentation." class="img-md" loading="lazy" />
+                            <img src="/images/static/lalam-team-outing-2.webp" alt="Los Alamos Landscaping team member smiling at an outdoor gathering, wearing sunglasses and a neon safety vest draped over his hat." class="img" loading="lazy" />
+                            <img src="/images/static/lalam-team-outing-3.webp" alt="Los Alamos Landscaping team and community members enjoying a picnic under a pavilion, with a table full of food and children serving themselves." class="img-md" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<div class="wrapper">
+								<img src="/images/static/lalam-van-1.webp" alt="Los Alamos Landscaping branded service van parked under a clear blue sky, ready for landscaping projects." class="img" loading="lazy" />
+							</div>
+							<div class="wrapper">
+								<h2 class="title-section">Looking Ahead <br class="mobile-hide"><span class="text-red">With Dedication</span></h2>
+								<div class="body-wrapper">
+									<p class="body-txt">At Los Alamos Landscaping & More, our vision is to continue enhancing the beauty of our community while creating enjoyable outdoor living spaces for our clients. We’re committed to delivering exceptional work and outstanding customer service, driven by a team of passionate professionals who strive to make a positive impact on both our clients and Los Alamos.</p>
+									<p class="body-txt">As we grow and expand our services, we remain dedicated to providing the best possible experience for every client. Great work by great people—it’s what we do.</p>
+								</div>
+								<div class="btn-wrapper">
+									<a href="/estimate" class="btn-primary">Get an Estimate</a>
+									<a href="/services" class="btn-secondary">View Our Services</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>
