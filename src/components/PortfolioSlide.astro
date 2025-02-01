@@ -6,15 +6,16 @@ const projects = await getCollection('projects');
 ---
 
 <div class="slider-container">
-  <div class="slider" id="slider">
+  <ul class="slider" id="slider">
     {projects.map((project: any) => (
       <PortfolioCard 
         title={project.data.title} 
         image={project.data.image} 
         link={`/projects/${project.slug}`}
+        mainAlt={project.data.mainAlt}
       />
     ))}
-  </div>
+  </ul>
   <div class="slider-controls">
     <button id="prevButton" aria-label="Scroll Backward" class="slider-btn">
         <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow left" loading="lazy" />
@@ -92,6 +93,11 @@ const projects = await getCollection('projects');
    
 
 <style>
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
   .slider-container {
     position: relative;
   }

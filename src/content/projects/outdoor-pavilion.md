@@ -1,5 +1,5 @@
 ---
-title: "Custom Backyard Pavilion"
+title: "Custom Pavilion"
 description: "This beautifully designed outdoor pavilion and barbecue station seamlessly blend functionality and aesthetics, creating the perfect space for outdoor gatherings. Featuring a custom-built wooden pergola, stacked stone bar, and polished concrete countertops, this space offers a durable and stylish outdoor cooking and entertainment area. The stamped concrete flooring adds a natural stone-like appearance, enhancing the overall ambiance of the space."
 image: "/images/uploads/pavilion_imgMain.webp"
 mainAlt: "A custom outdoor pavilion featuring a wooden pergola, stacked stone bar, and a barbecue station on a stamped concrete patio, set against a scenic desert landscape."

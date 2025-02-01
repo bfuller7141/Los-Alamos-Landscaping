@@ -3,19 +3,25 @@ export interface PortfolioProps {
     title: string;
     image: string;
     link: string;
+    mainAlt: string;
 }
 
-const { title, image, link } = Astro.props as PortfolioProps;
+const { title, image, link, mainAlt } = Astro.props as PortfolioProps;
 ---
-<a href={link}  class="portfolio-card">
-    <img src={image} alt={title} class="portfolio-card-img" loading="lazy" />
-    <div class="portfolio-card-link">
-        <h3 class="portfolio-card-title">{title}</h3>
-        <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow" loading="lazy" />
-    </div>
-</a>
+<li>
+    <a href={link}  class="portfolio-card">
+        <img src={image} alt={mainAlt} class="portfolio-card-img" loading="lazy" />
+        <div class="portfolio-card-link">
+            <h3 class="portfolio-card-title">{title}</h3>
+            <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow" loading="lazy" />
+        </div>
+    </a>
+</li>
 
 <style>
+    li {
+        list-style: none;
+    }
     .portfolio-card {
         position: relative;
         min-width: 20rem;
@@ -64,7 +70,7 @@ const { title, image, link } = Astro.props as PortfolioProps;
     }
 
     .portfolio-card-title {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: var(--title-xs);
         font-weight: 600;
     }
 

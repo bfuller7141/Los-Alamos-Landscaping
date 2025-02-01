@@ -1,0 +1,147 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FooterMain from "../components/FooterMain.astro";
+import NavMain from "../components/NavMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Accessibility Statement | Los Alamos Landscaping & More"
+            description="Los Alamos Landscaping & More is committed to digital accessibility. Learn about our efforts to ensure an inclusive website experience for all users."
+            keywords="Accessibility Statement, ADA Compliance, WCAG, Inclusive Website"
+            url="https://losalamoslandscaping.com/accessibility"
+        />
+    </head>
+    <body>
+        <header>
+            <NavMain />
+        </header>
+        <main>
+            <section class="hero">
+                <div class="padding-hero-xlbottom">
+                    <div class="container-short">
+                        <div class="wrapper">
+                            <h1 class="title-page">Accessibility <span class="text-red">Statement</span></h1>
+                        </div>
+
+                        <!-- 1. COMMITMENT TO ACCESSIBILITY -->
+                        <h2 class="title-md">1. Our Commitment to Accessibility</h2>
+                        <p>
+                            Los Alamos Landscaping & More is committed to ensuring digital accessibility for all users, 
+                            including individuals with disabilities. We continuously work to improve the usability of 
+                            our website and strive to comply with applicable accessibility standards, including the 
+                            <a href="https://www.w3.org/WAI/WCAG2AA-Conformance" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</a>.
+                        </p>
+
+                        <!-- 2. ACCESSIBILITY FEATURES -->
+                        <h2 class="title-md">2. Accessibility Features</h2>
+                        <p>We have implemented the following features to enhance website accessibility:</p>
+                        <ul>
+                            <li>Keyboard navigation support</li>
+                            <li>Descriptive alternative text for images</li>
+                            <li>Readable fonts with adjustable sizes</li>
+                            <li>High-contrast color schemes for better visibility</li>
+                            <li>Accessible forms with clear labels and instructions</li>
+                            <li>Screen reader compatibility</li>
+                            <li>Skip navigation links for quick access</li>
+                        </ul>
+
+                        <!-- 3. THIRD-PARTY CONTENT & LIMITATIONS -->
+                        <h2 class="title-md">3. Third-Party Content & Limitations</h2>
+                        <p>
+                            While we strive to ensure full accessibility, some third-party content (such as embedded maps, 
+                            external payment portals, and social media feeds) may not be fully compliant. We encourage users 
+                            encountering difficulties to reach out to us for assistance.
+                        </p>
+
+                        <!-- 4. ONGOING IMPROVEMENTS -->
+                        <h2 class="title-md">4. Ongoing Accessibility Improvements</h2>
+                        <p>
+                            We regularly audit our website for accessibility and welcome feedback to improve the user experience. 
+                            Our goal is to make the site as accessible as possible for all users.
+                        </p>
+
+                        <!-- 5. REPORTING ACCESSIBILITY ISSUES -->
+                        <h2 class="title-md">5. Reporting Accessibility Issues</h2>
+                        <p>
+                            If you experience any difficulties accessing content on our Site or have suggestions for improvement, 
+                            please contact us. We value your feedback and are committed to improving accessibility for all visitors.
+                        </p>
+
+                        <p><strong>Contact Information:</strong></p>
+                        <p>
+                            <strong>Los Alamos Landscaping & More</strong><br/>
+                            2470 E Road, Suite A<br/>
+                            Los Alamos, NM 87544<br/>
+                            (505) 662-6234<br/>
+                            <a href="mailto:contact@losalamoslandscaping.com">contact@losalamoslandscaping.com</a>
+                        </p>
+
+                        <h2 class="title-md">6. Accessibility Assistance</h2>
+                        <p>
+                            If you need assistance using our website, please reach out to us. We are happy to provide alternative 
+                            communication methods, such as phone support or email assistance, to ensure access to our services.
+                        </p>
+
+                        <h2 class="title-md">7. Policy Updates</h2>
+                        <p>
+                            We may update this Accessibility Statement as we improve our accessibility efforts. 
+                            Any changes will be reflected on this page with an updated revision date.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <FooterMain />
+    </body>
+</html>
+
+<style>
+    .title-sm {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: var(--title-sm);
+    font-optical-sizing: auto;
+    line-height: 1;
+    color: var(--red-500);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    }
+    .title-md {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 600;
+        font-size: var(--title-md);
+        font-optical-sizing: auto;
+        line-height: 1;
+        color: var(--brown-500);
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    p {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        font-optical-sizing: auto;
+        line-height: 1.5;
+        color: var(--gray-700);
+        margin: 0;
+    }
+    ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding-left: 1rem;
+    }
+    li {
+        font-family: 'Rubik', sans-serif;
+        font-size: var(--fs-body);
+        font-optical-sizing: auto;
+        line-height: 1.5;
+        color: var(--gray-700);
+    }
+    .container-short {
+        max-width: 70rem;
+        margin: 0 auto;
+        padding: 0;
+    }
+</style>
