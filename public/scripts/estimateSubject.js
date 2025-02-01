@@ -1,3 +1,4 @@
+function updateSubject(event) {
       // Get the input elements
       const firstNameElement = document.getElementById("first-name");
       const lastNameElement = document.getElementById("last-name");
@@ -16,4 +17,6 @@
     }
   
     // Ensure the function is triggered before form submission
-    document.getElementById("estimate-form").addEventListener("submit", updateSubject);
+      // Ensure the function is triggered before form submission
+      document.getElementById("estimate-form").addEventListener("submit", updateSubject);
+    }
