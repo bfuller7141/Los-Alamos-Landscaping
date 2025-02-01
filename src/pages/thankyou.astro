@@ -1,0 +1,50 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FooterMain from "../components/FooterMain.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import NavMain from "../components/NavMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title= "Los Alamos Landscaping | Thank You"
+            description= "Thank you for reaching out to Los Alamos Landscaping."
+            keywords="landscaping, landscaping services, landscaping company, landscaping design, landscaping maintenance"
+            url="https://losalamoslandscaping.com/thankyou"
+        />
+    </head>
+    <NavMain />
+    <body>
+        <main>
+            <section class="hero">
+                <div class="padding-hero">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-page text-center">Thank You for <br><span class="text-red">Reaching Out</span></h2>
+                            <p class="body-txt text-center">Thank you for reaching out to our team. We will get back to you as soon as possible.</p>
+                            <div class="btn-wrapper">
+                                <a href="/" class="btn-primary">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-short-bottom">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <GetInTouch />
+                            <div class="wrapper">
+								<img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+        </main>
+        <FooterMain />
+    </body>
+</html>
