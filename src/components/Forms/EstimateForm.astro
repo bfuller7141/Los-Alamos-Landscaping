@@ -8,6 +8,10 @@ import StateDropdown from "./StateDropdown.astro";
         <label for="bot-field">Don’t fill this out if you're human:</label>
         <input type="text" name="bot-field" id="bot-field" />
      </div>
+     <!-- Subject Line -->
+     <input type="hidden" name="_subject" value="New Estimate Request from {first-name} {last-name}">
+
+     
     <div class="form-group">
         <label for="submission-date">Submission Date:</label>
         <input class="short" type="date" id="submission-date" name="submission-date" readonly />
@@ -50,7 +54,7 @@ import StateDropdown from "./StateDropdown.astro";
     <h2 class="title-md text-underline margin-top">Project Information</h2>
     <div class="form-group">
         <label for="have-plan">Do you already have a plan?</label>
-        <select name="have-plan" id="have-plan" required>
+        <select name="do-they-have-plan" id="have-plan" required>
           <option value="yes">Yes</option>
           <option value="no" selected>No</option>
         </select>
@@ -61,7 +65,7 @@ import StateDropdown from "./StateDropdown.astro";
     </div>
     <div class="form-group">
         <label for="pay-design">Are you willing to pay for design services?</label>
-        <select name="pay-design" id="pay-design" required>
+        <select name="will-they-pay-design" id="pay-design" required>
           <option value="yes">Yes</option>
           <option value="no" selected>No</option>
         </select>
@@ -69,7 +73,7 @@ import StateDropdown from "./StateDropdown.astro";
     <div class="horizontal-group">
         <div class="form-group">
             <label for="have-budget">Do you have a set budget?</label>
-            <select name="have-budget" id="have-budget" required>
+            <select name="do-they-have-budget" id="have-budget" required>
               <option value="yes">Yes</option>
               <option value="no" selected>No</option>
             </select>
@@ -97,7 +101,7 @@ import StateDropdown from "./StateDropdown.astro";
     </div>
     <div class="form-group">
         <label for="looking-to-start">Are you looking to start this project?</label>
-        <select name="looking-to-start" id="looking-to-start" required>
+        <select name="project-status" id="looking-to-start" required>
             <option value="just-getting-prices">Just getting prices</option>
             <option value="ready-to-start">Ready to start</option>
             <option value="planning-and-budgeting">Planning and budgeting</option>
