@@ -92,7 +92,7 @@ import StateDropdown from "./StateDropdown.astro";
           <input type="date" class="datedropper-default" data-dd-opt-min-date="2025/01/01" data-dd-opt-format="mm-dd-y" data-dd-opt-max-year="2030" data-dd-opt-expanded-only="true" id="timeframe" name="timeframe" required placeholder="01-01-2025">
         </div>
         <div class="form-group">
-            <label for="willing-to-wait">Do you have a set budget?</label>
+            <label for="willing-to-wait">Are you willing to wait?</label>
             <select name="willing-to-wait" id="willing-to-wait" required>
               <option value="yes">Yes</option>
               <option value="no" selected>No</option>
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 /* Responsive Styles */
-    @media (max-width: 768px) {
+    @media (max-width: 850px) {
         .form-wrap {
             width: 100%;
         }
