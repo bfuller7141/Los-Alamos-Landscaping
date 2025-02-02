@@ -1,21 +1,72 @@
----
-export interface FAQProps {
-    question: string;
-    answer: string;
-}
-
-const { question, answer } = Astro.props as FAQProps;
----
 <div class="card-wrapper">
     <div class="faq-item">
         <div class="question-wrapper">
-            <h3 class="faq-question">{question}</h3>
+            <h3 class="faq-question">Can I pay my bill online?</h3>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
                 <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
               </svg>              
         </div>
         <div class="answer-wrapper">
-            <p class="body-text">{answer}</p>
+            <p class="body-text">Yes! You can conveniently pay your bill online. Just click the button below to make a secure payment. We make it easy to take care of payments anytime, anywhere. Let us know if you have any questions!</p>
+            <div>
+                <a href="https://losalamoslandsca.securepayments.cardpointe.com/pay?" target="_blank" class="btn-primary">Pay My Bill</a>
+                <div class="card-icon-wrap">
+                    <img src="/images/icons/card-icon_visa.svg" alt="Visa card icon" class="card-icon" loading="lazy" />
+                    <img src="/images/icons/card-icon_mc.svg" alt="Mastercard card icon" class="card-icon" loading="lazy" />
+                    <img src="/images/icons/card-icon_amex.svg" alt="American Express card icon" class="card-icon" loading="lazy" />
+                    <img src="/images/icons/card-icon_discover.svg" alt="Discover card icon" class="card-icon" loading="lazy" />                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="faq-item">
+        <div class="question-wrapper">
+            <h3 class="faq-question">What kinds of services do you offer?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
+                <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
+              </svg>              
+        </div>
+        <div class="answer-wrapper">
+            <p class="body-text">We provide a full range of residential and commercial landscaping services, including landscape design, irrigation, hardscaping, sod & seeding, trees & plants, and decks & patios. Whether you're looking to create a new outdoor space or maintain an existing one, we've got you covered.</p>
+            <div>
+                <a href="/services" class="btn-secondary">See All Services</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="faq-item">
+        <div class="question-wrapper">
+            <h3 class="faq-question">How much are your services?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
+                <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
+              </svg>              
+        </div>
+        <div class="answer-wrapper">
+            <p class="body-text">Pricing depends on the scope of the project, the size of your space, and the specific services you need. We offer customized solutions to fit your vision and budget.</p>
+            <p class="body-text">The best way to get an accurate estimate is to reach out to our team. We’ll assess your needs and provide a detailed quote.</p>
+            <div>
+                <a href="/estimate" class="btn-secondary">Request an Estimate</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="faq-item">
+        <div class="question-wrapper">
+            <h3 class="faq-question">Are you licensed and insured?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
+                <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
+              </svg>              
+        </div>
+        <div class="answer-wrapper">
+            <p class="body-text">Yes! Los Alamos Landscaping & More is fully licensed and insured for your peace of mind. We are licensed in the <strong>State of New Mexico (Lic #87033)</strong> and adhere to all industry standards to ensure quality work and safety on every project.</p>
+            <p class="body-text">If you have any questions about our licensing or coverage, feel free to ask!</p>
         </div>
     </div>
 </div>
@@ -53,6 +104,19 @@ const { question, answer } = Astro.props as FAQProps;
         color: var(--red-500);
         transition: all 0.2s ease;
     }
+
+    .card-icon-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .card-icon {
+    width: clamp(2rem, 3vw, 3rem);
+    height: auto;
+  }
 </style>
 
 <script>
