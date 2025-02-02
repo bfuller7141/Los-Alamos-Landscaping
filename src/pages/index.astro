@@ -8,6 +8,7 @@ import CheckHighlight from '../components/CheckHighlight.astro';
 import FAQ from '../components/FAQ.astro';
 import GetInTouch from '../components/GetInTouch.astro';
 import FooterMain from '../components/FooterMain.astro';
+import SkipMain from '../components/buttons/SkipMain.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,11 @@ import FooterMain from '../components/FooterMain.astro';
 		/>
 	</head>
 	<body>
+		<SkipMain />
 		<header>
 			<NavMain />
 		</header>
-		<main>
+		<main id="main">
 			<section class="hero">
 				<div class="padding-hero">
 					<div class="container">
@@ -169,7 +171,7 @@ import FooterMain from '../components/FooterMain.astro';
 				</div>
 			</section>
 			<section class="section-relative">
-				<div class="padding-short-bottom">
+				<div class="padding-global">
 					<div class="container">
 						<div class="wrapper-col">
 							<GetInTouch />

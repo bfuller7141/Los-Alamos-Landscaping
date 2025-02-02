@@ -1,0 +1,66 @@
+---
+export interface BlogItem {
+    title: string;
+    thumbnail: string;
+    date: string;
+    excerpt: string;
+    slug: string;
+}
+
+const { title, thumbnail, category, date, excerpt, slug } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+}).format(new Date(date));
+---
+<li>
+    <a href={`/blog/${slug}`}>
+        <img src={thumbnail} alt={`${title}`} class="img-blog"/>
+        <div class="blog-content">
+            <p class="feature">{formattedDate}</p>
+            <h3 class="title-sm">{title}</h3>
+            <p class="body-txt">{excerpt}</p>
+        </div>
+    </a>
+</li>
+
+<style>
+    li {
+        list-style: none;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+    a:hover .title-sm {
+        color: var(--red-500);
+        transition: all 0.3s ease;
+    }
+
+    .img-blog {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .blog-content {
+        margin-top: 1rem;
+    }
+
+    .feature {
+        font-size: var(--body-sm);
+        font-weight: 600;
+        color: var(--gray-500);
+        margin-bottom: 0.5rem;
+    }
+</style>

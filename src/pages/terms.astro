@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
 import FooterMain from "../components/FooterMain.astro";
 import NavMain from "../components/NavMain.astro";
 ---
@@ -14,10 +15,11 @@ import NavMain from "../components/NavMain.astro";
         />
     </head>
     <body>
+        <SkipMain />
         <header>
             <NavMain />
         </header>
-        <main>
+        <main id="main">
             <section class="hero">
                 <div class="padding-hero">
                     <div class="container-short">

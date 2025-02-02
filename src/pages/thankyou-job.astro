@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
 import FooterMain from "../components/FooterMain.astro";
 import GetInTouch from "../components/GetInTouch.astro";
 import NavMain from "../components/NavMain.astro";
@@ -15,9 +16,12 @@ import NavMain from "../components/NavMain.astro";
             url="https://losalamoslandscaping.com/thankyou-job"
         />
     </head>
-    <NavMain />
     <body>
-        <main>
+		<SkipMain />
+        <header>
+            <NavMain />
+        </header>
+        <main id="main">
             <section class="hero">
                 <div class="padding-hero">
                     <div class="container">
@@ -35,7 +39,7 @@ import NavMain from "../components/NavMain.astro";
                 </div>
             </section>
             <section class="section-relative">
-                <div class="padding-short-bottom">
+                <div class="padding-global">
                     <div class="container">
                         <div class="wrapper-col">
                             <GetInTouch />

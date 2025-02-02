@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
 import FooterMain from "../components/FooterMain.astro";
 import EstimateForm from "../components/Forms/EstimateForm.astro";
 import NavMain from "../components/NavMain.astro";
@@ -16,9 +17,12 @@ import NavMain from "../components/NavMain.astro";
         <script src="/datedropper-javascript.js" is:inline></script>
         <script src="/scripts/estimateSubject.js" defer></script>
     </head>
-    <NavMain />
     <body>
-        <main>
+		<SkipMain />
+        <header>
+            <NavMain />
+        </header>
+        <main id="main">
             <section class="hero">
                 <div class="padding-hero-xlbottom">
                     <div class="container">

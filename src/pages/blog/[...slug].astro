@@ -1,0 +1,140 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import NavMain from "../../components/NavMain.astro";
+import { marked } from 'marked';
+import GetInTouch from "../../components/GetInTouch.astro";
+import FooterMain from "../../components/FooterMain.astro";
+import SkipMain from "../../components/buttons/SkipMain.astro";
+
+export const getStaticPaths = async () => {
+    const blogEntries = await getCollection('blog');
+    return blogEntries.map((blog) => ({
+        params: { slug: blog.slug },
+        props: { ...blog.data }, // Ensuring proper data extraction
+    }));
+};
+
+
+interface BlogProps {
+    titlePage: string;
+    date: string;
+    category: string;
+    coverImage: string;
+    featured: boolean;
+    slug: string;
+    article: string;
+    excerpt: string;
+    author: string;
+    readTime: number;
+}
+
+const { titlePage, excerpt, date, article, slug, coverImage } = Astro.props as unknown as BlogProps;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+}).format(new Date(date));
+
+let bodyContent: string = '';
+if (article) {
+    bodyContent = await marked(article);
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={`Los Alamos Landscaping Services | ${titlePage}`}
+            description={excerpt}
+            keywords="blog, landscaping blog, landscaping tips, landscaping ideas, landscaping advice"
+            url={`https://losalamoslandscaping.com/blog/${slug}`}
+        />
+    </head>
+    <body>
+		<SkipMain />
+        <header>
+            <NavMain />
+        </header>
+        <main id="main">
+            <section class="hero">
+                <div class="padding-hero">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <p class="title-sm text-red text-center">Los Alamos Landscaping Blog</p>
+                            <h1 class="title-page text-center text-underline-center">{titlePage}</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="padding-short-top">
+                    <div class="container-short">
+                        <a class="btn-secondary" href="/blog">Back to Blog</a>
+                        <div class="wrapper">
+                            <img src={coverImage} alt={titlePage} class="img-blog"/>
+                            <article>
+                                <div class="body" set:html={await marked(article)}></div>
+                            </article>                        
+                        </div>
+                        <a class="btn-secondary" href="/blog">Back to Blog</a>
+                    </div>
+                </div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+                            <div class="btn-wrapper center">
+                                <a href="/estimate" class="btn-primary">Get an Estimate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn-secondary" href="/blog">Back to Blog</a>
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <GetInTouch />
+                            <div class="wrapper">
+                                <img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    <FooterMain />
+    </body>
+</html>
+
+<style>
+    image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 1;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 1rem auto;
+    }
+    .body {
+        margin-bottom: 1rem;
+        line-height: 2;
+        font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    }
+    .img-blog {
+        width: 100%;
+        aspect-ratio: 16 / 5;
+        object-fit: cover;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        padding: 0;
+        margin-top: 2rem;
+    }
+</style>

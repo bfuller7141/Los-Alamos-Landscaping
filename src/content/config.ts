@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { optional } from "astro:schema";
 
 // Define the "services" collection
 const servicesCollection = defineCollection({
@@ -67,10 +68,26 @@ const projectsCollection = defineCollection({
   }),
 });
 
+// Define the "blog" collection
+const blogCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    titlePage: z.string(),
+    date: z.date(), 
+    thumbnail: z.string(),
+    coverImage: z.string(),
+    featured: z.boolean().default(false),
+    slug: z.string().optional(),
+    article: z.string(),
+    excerpt: z.string(),
+  }),
+});
+
 // Export all collections
 export const collections = {
   services: servicesCollection,
   testimonials: testimonialsCollection,
   team: teamCollection,
   projects: projectsCollection,
+  blog: blogCollection,
 };

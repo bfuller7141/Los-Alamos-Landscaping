@@ -23,6 +23,12 @@ body {
     box-sizing: border-box;
 }
 
+.container-short {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
 .hidden-all {
     display: none;
 }
@@ -239,6 +245,7 @@ body {
     line-height: 1;
     color: var(--brown-500);
     margin: var(--title-padding);
+    transition: all 0.3s ease;
 }
 
 .title-xs {

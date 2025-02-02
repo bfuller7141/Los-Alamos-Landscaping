@@ -66,3 +66,20 @@ collections:
       - {label: "About Project", name: "about", widget: "textarea"}
       - {label: "Article Link", name: "articleLink", widget: "string"}
       - {label: "Gallery", name: "gallery", widget: "list", fields: [{label: "Image", name: "image", widget: "image"}, {label: "Image Description", name: "alt", widget: "text"}]}
+
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    extension: "md"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "TitlePage", name: "titlePage", widget: "string", required: true}
+      - {label: "Date", name: "date", widget: "datetime", required: true}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: true}
+      - {label: "Cover Image", name: "coverImage", widget: "image", required: true}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Slug", name: "slug", widget: "string", required: true}
+      - {label: "Article", name: "article", widget: "markdown", required: true}
+      - {label: "Excerpt", name: "excerpt", widget: "string", required: true}

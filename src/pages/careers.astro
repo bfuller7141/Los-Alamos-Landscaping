@@ -8,6 +8,7 @@ import GetInTouch from '../components/GetInTouch.astro';
 import FooterMain from '../components/FooterMain.astro';
 import TeamGrid from '../components/TeamGrid.astro';
 import ApplicationForm from '../components/Forms/ApplicationForm.astro';
+import SkipMain from '../components/buttons/SkipMain.astro';
 ---
 
 <!DOCTYPE html>
@@ -22,10 +23,11 @@ import ApplicationForm from '../components/Forms/ApplicationForm.astro';
         <script src="/scripts/appUpload.js" defer></script>
     </head>
     <body>
+        <SkipMain />
         <header>
             <NavMain />
         </header>
-        <main>
+        <main id="main">
             <section class="hero">
                 <div class="padding-hero">
                     <div class="container">

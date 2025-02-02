@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
 import CheckHighlight from "../components/CheckHighlight.astro";
 import FooterMain from "../components/FooterMain.astro";
 import GetInTouch from "../components/GetInTouch.astro";
@@ -18,10 +19,11 @@ import ServiceGrid from "../components/ServiceGrid.astro";
         />
     </head>
     <body>
+		<SkipMain />
         <header>
             <NavMain />
         </header>
-        <main>
+        <main id="main">
             <section class="hero">
                 <div class="padding-hero-xlbottom">
                     <div class="container">
@@ -109,7 +111,7 @@ import ServiceGrid from "../components/ServiceGrid.astro";
                 <img class="leaf-3" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
 			</section>
 			<section class="section-relative">
-				<div class="padding-short-bottom">
+				<div class="padding-global">
 					<div class="container">
 						<div class="wrapper-col">
 							<GetInTouch />

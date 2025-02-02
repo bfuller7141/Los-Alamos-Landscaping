@@ -6,6 +6,7 @@ import TestimonialGrid from "../../components/TestimonialGrid.astro";
 import GetInTouch from "../../components/GetInTouch.astro";
 import FooterMain from "../../components/FooterMain.astro";
 import ServiceGrid from "../../components/ServiceGrid.astro";
+import SkipMain from "../../components/buttons/SkipMain.astro";
 
 export const getStaticPaths = async () => {
     const serviceEntries = await getCollection('projects');
@@ -47,124 +48,128 @@ const { title, description, image, imageTwo, creditTwo, mainAlt, altTwo, about, 
             url={`https://losalamoslandscaping.com/services/${slug}`}
         />
     </head>
-    <NavMain />
     <body>
-        <section class="hero">
-            <div class="padding-hero">
-                <div class="container">
-                    <div class="wrapper-col">
-                        <div class="wrapper hero-center">
-                            <p class="title-sm text-red">Los Alamos Landscaping Projects</p>
-                            <h1 class="title-page">{title}</h1>
-                            <p class="body-txt">{description}</p>
-                            <div class="btn-wrapper">
-                                <a href="/estimate" class="btn-primary">Get an Estimate Today</a>
+		<SkipMain />
+        <header>
+            <NavMain />
+        </header>
+        <main id="main">
+            <section class="hero">
+                <div class="padding-hero">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <div class="wrapper hero-center">
+                                <p class="title-sm text-red">Los Alamos Landscaping Projects</p>
+                                <h1 class="title-page">{title}</h1>
+                                <p class="body-txt">{description}</p>
+                                <div class="btn-wrapper">
+                                    <a href="/estimate" class="btn-primary">Get an Estimate Today</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="wrapper">
-                            <img src={image} alt={mainAlt} class="img-hero" loading="eager"/>
+                            <div class="wrapper">
+                                <img src={image} alt={mainAlt} class="img-hero" loading="eager"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="deco-bottom-short"></div>
-        </section>
-        <section class="section-relative">
-            <div class="padding-large-top">
-                <div class="container">
-                    <div class="wrapper-col">
-                        <div class="wrapper">
-                            <img src={imageTwo} alt={altTwo} class="img" loading="lazy" />
-                            {creditTwo && <p class="body-sm">{creditTwo}</p>}
-                        </div>
-                        <div class="wrapper">
-                            <h2 class="title-section">Brining Expertise <br class="mobile-hide"><span class="text-red">To Every Project</span></h2>
-                            <div class="body-wrapper">
-                                <p class="body-txt">{about}</p>
+                <div class="deco-bottom-short"></div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-large-top">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <div class="wrapper">
+                                <img src={imageTwo} alt={altTwo} class="img" loading="lazy" />
+                                {creditTwo && <p class="body-sm">{creditTwo}</p>}
                             </div>
-                            <div class="btn-wrapper">
-                                <a href="/estimate" class="btn-primary">
-                                  Get an Estimate
-                                </a>
-                                {articleLink && (
-                                  <a href={articleLink} class="btn-secondary" target="_blank" rel="noopener noreferrer">
-                                    Read The Article
-                                  </a>
-                                )}
-                              </div>
+                            <div class="wrapper">
+                                <h2 class="title-section">Brining Expertise <br class="mobile-hide"><span class="text-red">To Every Project</span></h2>
+                                <div class="body-wrapper">
+                                    <p class="body-txt">{about}</p>
+                                </div>
+                                <div class="btn-wrapper">
+                                    <a href="/estimate" class="btn-primary">
+                                    Get an Estimate
+                                    </a>
+                                    {articleLink && (
+                                    <a href={articleLink} class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                                        Read The Article
+                                    </a>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
-        </section>
-        {gallery && gallery.length > 0 && (
+                <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            {gallery && gallery.length > 0 && (
+                <section class="section-relative">
+                    <div class="padding-global">
+                        <div class="container">
+                            <h2 class="title-section text-underline">Project Gallery</h2>
+                            <div class="gallery-grid">
+                                {gallery.map((item, index) => (
+                                    <div class="gallery-item">
+                                        <img
+                                            src={item.image}
+                                            alt={item.alt || `Image ${index + 1}`}
+                                            class="img"
+                                            loading="lazy"
+                                        />
+                                        {item.credit && <p class="body-sm">{item.credit}</p>}
+                                    </div>
+                                ))}
+                            </div> 
+                        </div>  
+                    </div>
+                </section>
+            )}
             <section class="section-relative">
                 <div class="padding-global">
                     <div class="container">
-                        <h2 class="title-section text-underline">Project Gallery</h2>
-                        <div class="gallery-grid">
-                            {gallery.map((item, index) => (
-                                <div class="gallery-item">
-                                    <img
-                                        src={item.image}
-                                        alt={item.alt || `Image ${index + 1}`}
-                                        class="img"
-                                        loading="lazy"
-                                    />
-                                    {item.credit && <p class="body-sm">{item.credit}</p>}
-                                </div>
-                            ))}
-                        </div> 
-                    </div>  
+                        <h2 class="title-section text-underline">Our Services</h2>
+                        <ServiceGrid />
+                    </div>
+                </div>
+                <img class="leaf-2" src="/images/assets/leaf-small_2.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            <section class="section-dark">
+                <div class="padding-global">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-section text-center text-underline-center">What Our Customers Say</h2>
+                        </div>
+                        <TestimonialGrid />
+                    </div>
                 </div>
             </section>
-          )}
-          <section class="section-relative">
-            <div class="padding-global">
-                <div class="container">
-                    <h2 class="title-section text-underline">Our Services</h2>
-                    <ServiceGrid />
-                </div>
-            </div>
-            <img class="leaf-2" src="/images/assets/leaf-small_2.svg" alt="" role="presentation" loading="lazy"/>
-        </section>
-        <section class="section-dark">
-            <div class="padding-global">
-                <div class="container">
-                    <div class="wrapper-center">
-                        <h2 class="title-section text-center text-underline-center">What Our Customers Say</h2>
-                    </div>
-                    <TestimonialGrid />
-                </div>
-            </div>
-        </section>
-        <section class="section-relative">
-            <div class="padding-large-top">
-                <div class="container">
-                    <div class="wrapper-center">
-                        <h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
-                        <div class="btn-wrapper center">
-                            <a href="/estimate" class="btn-primary">Get an Estimate</a>
+            <section class="section-relative">
+                <div class="padding-large-top">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+                            <div class="btn-wrapper center">
+                                <a href="/estimate" class="btn-primary">Get an Estimate</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section-relative">
-            <div class="padding-short-bottom">
-                <div class="container">
-                    <div class="wrapper-col">
-                        <GetInTouch />
-                        <div class="wrapper">
-                            <img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
+            </section>
+            <section class="section-relative">
+                <div class="padding-global">
+                    <div class="container">
+                        <div class="wrapper-col">
+                            <GetInTouch />
+                            <div class="wrapper">
+                                <img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="deco-bottom-short"></div>
-        </section>
-    </main>
-    <FooterMain />
-</body>
+                <div class="deco-bottom-short"></div>
+            </section>
+        </main>
+        <FooterMain />
+    </body>
 </html>

@@ -1,0 +1,42 @@
+---
+import BlogCard from "./BlogCard.astro";
+
+const blog = await Astro.glob("../content/blog/*.md");
+
+const allBlogItems = blog.map(item => ({
+    title: item.frontmatter.title,
+    thumbnail: item.frontmatter.thumbnail,
+    date: item.frontmatter.date,
+    excerpt: item.frontmatter.excerpt,
+    slug: item.frontmatter.slug,
+}));
+---
+
+<ul class="blog-grid">
+    {allBlogItems.map((item, index) => (
+        <BlogCard key={index} {...item} />
+    ))}
+</ul>
+
+<style>
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

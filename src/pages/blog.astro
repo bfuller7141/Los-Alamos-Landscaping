@@ -1,0 +1,74 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BlogCollection from "../components/BlogCollection.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import NavMain from "../components/NavMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Los Alamos Landscaping & More | Our Blog"
+            description="Stay up to date with the latest landscaping tips, trends, and news from Los Alamos Landscaping & More. From design ideas to maintenance advice, we’re here to help you create and care for beautiful outdoor spaces in New Mexico."
+            keywords="Landscaping Blog NM, Outdoor Design Tips, Lawn Care Advice, Los Alamos Landscaping News"
+            url="https://losalamoslandscaping.com/blog"
+        />
+    </head>
+    <body>
+        <SkipMain />
+        <header>
+            <NavMain />
+        </header>
+        <main id="main">
+            <section class="hero">
+                <div class="padding-hero-xlbottom">
+                    <div class="container">
+                        <div class="wrapper-center">
+                            <h1 class="title-sm text-red text-center">Los Alamos Landscaping Blog</h1>
+                            <h2 class="title-page text-center">Landscaping Tips <br class="mobile-hide"><span class="text-red">Projects & Insights</span></h2>
+                            <p class="body-txt text-center">Explore expert landscaping tips, project highlights, and behind-the-scenes insights from Los Alamos Landscaping & More. Whether you're looking for seasonal maintenance advice, inspiration for your next outdoor project, or a closer look at our work in the community, you'll find it all here. Stay informed, get inspired, and make the most of your outdoor space.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="deco-bottom-short"></div>
+            </section>
+            <section class="section-relative">
+                <div class="padding-large-top">
+                    <div class="container">
+                        <BlogCollection />
+                    </div>
+                </div>
+                <img class="leaf-1" src="/images/assets/leaf-small_1.svg" alt="" role="presentation" loading="lazy"/>
+            </section>
+            <section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-center">
+							<h2 class="title-section text-center">Ready To Get Started <br class="mobile-hide" class="mobile-hide"><span class="text-red">On Your Project?</span></h2>
+							<div class="btn-wrapper center">
+								<a href="/estimate" class="btn-primary">Get an Estimate</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section-relative">
+				<div class="padding-global">
+					<div class="container">
+						<div class="wrapper-col">
+							<GetInTouch />
+							<div class="wrapper">
+								<img src="/images/static/lalam-building.webp" alt="Exterior of a landscaped commercial building with decorative plants, stone accents, and a patio area in Los Alamos." class="img" loading="lazy" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="deco-bottom-short"></div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>
