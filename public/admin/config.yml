@@ -8,8 +8,8 @@ backend:
   api_root: https://gitlab.com/api/v4
 logo_url: /images/logos/lalam-logo_wordmark.svg
 
-media_folder: "/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "public/images/uploads"
+public_folder: "public/images/uploads"
 
 collections:
   - name: "services"
