@@ -114,7 +114,7 @@ if (article) {
 
 <style>
     .body img {
-        width: 100% !important;
+        max-width: 100% !important;
         aspect-ratio: 16 / 5 !important;
         object-fit: cover !important;
         border-radius: 0.25rem !important;
@@ -137,3 +137,11 @@ if (article) {
         margin-top: 2rem;
     }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".body img").forEach(img => {
+            img.classList.add("img-blog");
+        });
+    });
+</script>
