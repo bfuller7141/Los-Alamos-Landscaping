@@ -24,6 +24,10 @@ article: >-
 
   Late winter is the best time to prune many trees, shrubs, and perennials before new growth begins. Pruning removes dead or diseased wood, improves plant structure, and encourages healthier blooms and fruit production.
 
+  <figure>
+    <img class="markdown-img" src="/images/uploads/indoor-veggies.webp" alt="Starting Vegetables Indoors">
+    <figcaption>Starting Vegetables Indoors in February</figcaption>
+  </figure>
 
   ### **Best Practices for Pruning in Northern New Mexico**
 

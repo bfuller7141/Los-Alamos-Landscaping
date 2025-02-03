@@ -2,23 +2,16 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import NavMain from "../../components/NavMain.astro";
-import { marked } from "marked";
+import { marked } from 'marked';
 import GetInTouch from "../../components/GetInTouch.astro";
 import FooterMain from "../../components/FooterMain.astro";
 import SkipMain from "../../components/buttons/SkipMain.astro";
-
-// Custom renderer for images in Markdown
-const renderer = new marked.Renderer();
-renderer.image = (href, title, text) => {
-  return `<img src="${href}" alt="${text || ''}" class="img-blog" loading="lazy" />`;
-};
-marked.use({ renderer });
 
 export const getStaticPaths = async () => {
     const blogEntries = await getCollection('blog');
     return blogEntries.map((blog) => ({
         params: { slug: blog.slug },
-        props: { ...blog.data },
+        props: { ...blog.data }, // Ensuring proper data extraction
     }));
 };
 
@@ -38,12 +31,12 @@ interface BlogProps {
 const { titlePage, excerpt, date, article, slug, coverImage } = Astro.props as unknown as BlogProps;
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
 }).format(new Date(date));
 
-let bodyContent = "";
+let bodyContent: string = '';
 if (article) {
     bodyContent = await marked(article);
 }
@@ -82,7 +75,7 @@ if (article) {
                         <div class="wrapper">
                             <img src={coverImage} alt={titlePage} class="img-blog"/>
                             <article>
-                                <div class="body" set:html={bodyContent}></div>
+                                <div class="body markdown-content" set:html={await marked(article)}></div>
                             </article>                       
                         </div>
                         <a class="btn-secondary" href="/blog">Back to Blog</a>
@@ -119,7 +112,7 @@ if (article) {
 </html>
 
 <style>
-    .markdown-content img {
+    .markdown-img {
         display: block;
         width: 100%;
         max-width: 100%;
