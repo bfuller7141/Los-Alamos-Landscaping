@@ -9,10 +9,9 @@ import SkipMain from "../../components/buttons/SkipMain.astro";
 
 // Custom renderer for images in Markdown
 const renderer = new marked.Renderer();
-renderer.image = ({ href, title, text }) => {
-  return `<img src="${href}" alt="${text}" class="img-blog" loading="lazy"/>`;
+renderer.image = (href, title, text) => {
+  return `<img src="${href}" alt="${text || ''}" class="img-blog" loading="lazy" />`;
 };
-
 marked.use({ renderer });
 
 export const getStaticPaths = async () => {
