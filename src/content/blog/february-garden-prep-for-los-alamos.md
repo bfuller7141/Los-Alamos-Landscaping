@@ -2,7 +2,7 @@
 title: February Garden Prep for Los Alamos
 titlePage: February Garden Prep for Los Alamos
 date: 2025-02-03T00:00:00.000Z
-thumbnail: /images/uploads/los-alamos.webp
+thumbnail: /images/uploads/feb-garden-tips.webp
 coverImage: /images/uploads/los-alamos.webp
 featured: true
 slug: february-gardening-prep
