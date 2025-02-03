@@ -25,9 +25,9 @@ article: >-
   Late winter is the best time to prune many trees, shrubs, and perennials before new growth begins. Pruning removes dead or diseased wood, improves plant structure, and encourages healthier blooms and fruit production.
 
   <figure>
-    <img class="markdown-img" src="/images/uploads/indoor-veggies.webp" alt="Starting Vegetables Indoors">
-    <figcaption>Starting Vegetables Indoors in February</figcaption>
+    <img class="img-hero-center" src="/images/uploads/pruning.webp" alt="Starting Vegetables Indoors">
   </figure>
+
 
   ### **Best Practices for Pruning in Northern New Mexico**
 
@@ -52,6 +52,10 @@ article: >-
   * **Add Organic Matter:** Compost or well-aged manure can be lightly worked into the soil to replenish nutrients before spring planting.
 
   * **Apply Mulch Sparingly:** Mulching now can help retain moisture, but keep it light to allow the soil to warm up naturally.
+
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/compost.webp" alt="Starting Vegetables Indoors">
+  </figure>
 
 
   ## **3. Start Cool-Season Vegetables Indoors & Outdoors**
@@ -98,11 +102,19 @@ article: >-
 
   For best results, plant cool-season crops under a row cover to protect them from sudden cold snaps.
 
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/indoor-veggies.webp" alt="Starting Vegetables Indoors">
+  </figure>
+
 
   ## **4. Plan & Plant Native and Drought-Tolerant Perennials**
 
 
   Los Alamos and White Rock gardens thrive with native plants that can handle our dry climate, cold winters, and strong sun. February is a great time to plan your landscape and even start planting some perennials if the weather is mild.
+
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/russian-sage.webp" alt="Starting Vegetables Indoors">
+  </figure>
 
 
   ### **Great Native & Waterwise Perennials for Northern New Mexico**
@@ -133,6 +145,10 @@ article: >-
 
   * **Plan Watering Schedules:** In March and April, gradually increase watering frequency to match the warming temperatures.
 
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/irrigation.webp" alt="Starting Vegetables Indoors">
+  </figure>
+
 
   ## **6. Control Weeds Before They Take Over**
 
@@ -146,6 +162,10 @@ article: >-
 
   * **Use Mulch or Landscape Fabric:** Mulch helps block weeds while also retaining moisture.
 
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/weeds.webp" alt="Starting Vegetables Indoors">
+  </figure>
+
 
   ## **7. Feed Your Soil & Plants**
 
@@ -158,6 +178,10 @@ article: >-
   * **Use Organic Fertilizer:** For fruit trees, consider a slow-release fertilizer rich in phosphorus and potassium.
 
   * **Amend Vegetable Beds:** Add bone meal, kelp meal, or well-rotted manure to improve soil fertility.
+
+  <figure>
+    <img class="img-hero-center" src="/images/uploads/mulching.webp" alt="Starting Vegetables Indoors">
+  </figure>
 
 
   ## **Final Thoughts**

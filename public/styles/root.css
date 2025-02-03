@@ -56,3 +56,9 @@
     --small: 0.25rem;
     --nav: 1.5rem;
 }
+
+*:focus-visible {
+    outline: 3px solid var(--red-500);
+    border-radius: 4px;
+    offset: 2px;
+}
