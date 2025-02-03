@@ -7,7 +7,7 @@ coverImage: /images/uploads/los-alamos.webp
 featured: true
 slug: february-gardening-prep
 article: >-
-  ## ***Get Ready for a Thriving Spring Garden in Northern New Mexico***
+  ## ***Get Ready for a Thriving Spring Garden***
 
 
   As February rolls in, the high desert climate of Northern New Mexico begins its slow transition from winter’s grip to the milder days of early spring. While we still experience cold nights and occasional snow, longer daylight hours signal that now is the perfect time to start prepping your garden for a season of vibrant growth.
@@ -35,9 +35,6 @@ article: >-
   * **Shrubs & Perennials:** Trim back Russian sage, desert willow, and butterfly bush to encourage strong spring growth. For lavender and sage, wait until March or April to prevent winter damage.
 
 
-  ![](/images/uploads/pruning.webp)
-
-
   ## **2. Prepare Garden Beds for Planting**
 
 
@@ -51,9 +48,6 @@ article: >-
   * **Add Organic Matter:** Compost or well-aged manure can be lightly worked into the soil to replenish nutrients before spring planting.
 
   * **Apply Mulch Sparingly:** Mulching now can help retain moisture, but keep it light to allow the soil to warm up naturally.
-
-
-  ![](/images/uploads/compost.webp)
 
 
   ## **3. Start Cool-Season Vegetables Indoors & Outdoors**
@@ -101,9 +95,6 @@ article: >-
   For best results, plant cool-season crops under a row cover to protect them from sudden cold snaps.
 
 
-  ![](/images/uploads/indoor-veggies.webp)
-
-
   ## **4. Plan & Plant Native and Drought-Tolerant Perennials**
 
 
@@ -126,9 +117,6 @@ article: >-
   * **Cacti & Succulents:** Opt for claret cup cactus, cholla, or native yucca for an ultra-low-water landscape.
 
 
-  ![](/images/uploads/russian-sage.webp)
-
-
   ## **5. Check Irrigation Systems & Watering Plans**
 
 
@@ -140,9 +128,6 @@ article: >-
   * **Clean Out Rain Barrels:** If you collect rainwater, make sure barrels are clean and ready for use.
 
   * **Plan Watering Schedules:** In March and April, gradually increase watering frequency to match the warming temperatures.
-
-
-  ![](/images/uploads/irrigation.webp)
 
 
   ## **6. Control Weeds Before They Take Over**
@@ -158,9 +143,6 @@ article: >-
   * **Use Mulch or Landscape Fabric:** Mulch helps block weeds while also retaining moisture.
 
 
-  ![](/images/uploads/weeds.webp)
-
-
   ## **7. Feed Your Soil & Plants**
 
 
@@ -172,9 +154,6 @@ article: >-
   * **Use Organic Fertilizer:** For fruit trees, consider a slow-release fertilizer rich in phosphorus and potassium.
 
   * **Amend Vegetable Beds:** Add bone meal, kelp meal, or well-rotted manure to improve soil fertility.
-
-
-  ![](/images/uploads/mulching.webp)
 
 
   ## **Final Thoughts**
