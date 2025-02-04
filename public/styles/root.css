@@ -4,7 +4,7 @@
     --red-200: #F8AEA7;
     --red-300: #F5867C;
     --red-400: #F15D50;
-    --red-500: #EE3524; /* Base color */
+    --red-500: #D82D1F; /* Base color */
     --red-600: #E03522;
     --red-700: #BE2A1D;
     --red-800: #8F2016;
@@ -23,21 +23,21 @@
     --full-white: #FFFFFF;
 
     --gray-100: #F1F1F2;
-    --gray-200: #C1C2C2;
+    --gray-200: #EAEAEA;
     --gray-300: #919191;
     --gray-400: #606161;
     --gray-500: #333333;
 
 /* Font Size */
-    --fs-body: clamp(1rem, 1.5vw, 1.25rem);
+    --fs-body: clamp(1.125rem, 1.5vw, 1.25rem);
     --fs-bodysm: clamp(1rem, 1vw, 1rem);
     --fs-bodyxs: clamp(0.75rem, 1vw, 1rem);
     --fs-bodylg: clamp(1rem, 1.5vw, 1.75rem);
     --fs-bodyxl: clamp(1.5rem, 2vw, 3rem);
-    --page-title: clamp(3.5rem, 5vw, 6rem);
-    --section-title: clamp(3rem, 4vw, 4.5rem);
-    --title-lg: clamp(3rem, 2.5vw, 4rem);
-    --title-md: clamp(2.5rem, 2vw, 3rem);
+    --page-title: clamp(3rem, 5.5vw, 6rem);
+    --section-title: clamp(2.5rem, 4vw, 4.5rem);
+    --title-lg: clamp(2.5rem, 2.5vw, 4rem);
+    --title-md: clamp(2.25rem, 2vw, 3rem);
     --title-sm: clamp(1.25rem, 1.5vw, 2rem);
     --title-xs: clamp(1rem, 2vw, 1.25rem);
 
