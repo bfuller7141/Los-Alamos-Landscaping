@@ -1,4 +1,12 @@
-function updateSubject(event) {
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contact-form");
+
+  if (!contactForm) {
+    console.warn("Contact form not found. Script execution aborted.");
+    return;
+  }
+
+  contactForm.addEventListener("submit", function (event) {
     // Get the input elements
     const firstNameElement = document.getElementById("first-name");
     const lastNameElement = document.getElementById("last-name");
@@ -8,14 +16,9 @@ function updateSubject(event) {
     if (firstNameElement && lastNameElement && subjectField) {
       const firstName = firstNameElement.value.trim();
       const lastName = lastNameElement.value.trim();
-      
+
       // Set the dynamic subject line
       subjectField.value = `New Contact Submission from ${firstName} ${lastName}`;
     }
-
-    // Allow the form to submit
-    return true;
-  }
-
-  // Ensure the function is triggered before form submission
-  document.getElementById("contact-form").addEventListener("submit", updateSubject);
+  });
+});
