@@ -50,44 +50,39 @@ const projects = await getCollection('projects');
       let scrollStart: number | null = null; // Track initial scroll position
   
       slider.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        scrollStart = slider.scrollLeft; // Store the initial scroll position
-      });
-  
-      slider.addEventListener('touchmove', (e) => {
-        if (startX !== null) {
-          const currentX = e.touches[0].clientX;
-          const distance = startX - currentX;
-          if (scrollStart !== null) {
-            slider.scrollLeft = scrollStart + distance; // Adjust scroll position as user swipes
-          }
+      startX = e.touches[0].clientX;
+      scrollStart = slider.scrollLeft;
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', (e) => {
+      if (startX !== null) {
+        const currentX = e.touches[0].clientX;
+        const distance = startX - currentX;
+        if (scrollStart !== null) {
+          slider.scrollLeft = scrollStart + distance;
         }
-      });
-  
-      slider.addEventListener('touchend', (e) => {
-        if (startX === null) return;
-  
-        const endX = e.changedTouches[0].clientX;
-        const distance = startX - endX;
-  
-        if (Math.abs(distance) > cardWidth / 2) {
-          // Scroll to the next or previous card if swipe exceeds threshold
-          slider.scrollBy({
-            left: distance > 0 ? cardWidth : -cardWidth,
-            behavior: 'smooth',
-          });
-        } else {
-          // Snap back to the closest card if swipe is too short
-          slider.scrollBy({
-            left: 0,
-            behavior: 'smooth',
-          });
-        }
-  
-        // Reset swipe state
-        startX = null;
-        scrollStart = null;
-      });
+      }
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      
+      const endX = e.changedTouches[0].clientX;
+      const distance = startX - endX;
+
+      if (Math.abs(distance) > cardWidth / 2) {
+        slider.scrollBy({
+          left: distance > 0 ? cardWidth : -cardWidth,
+          behavior: 'smooth',
+        });
+      } else {
+        slider.scrollBy({ left: 0, behavior: 'smooth' });
+      }
+
+      startX = null;
+      scrollStart = null;
+    }, { passive: true });
+
     }
   </script>
    

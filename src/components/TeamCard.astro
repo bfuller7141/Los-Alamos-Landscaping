@@ -8,7 +8,7 @@ export interface teamProps {
 const { name, image, role } = Astro.props as teamProps;
 ---
 <div class="team-card">
-    <img src={image} alt={name} class="team-card-img" loading="lazy" />
+    <img src={image} width="461" height="657" alt={name} class="team-card-img" loading="lazy" />
     <div class="team-card-link">
         <h3 class="team-card-title">{name}</h3>
         <h4 class="role">{role}</h4>

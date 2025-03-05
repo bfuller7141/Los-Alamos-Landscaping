@@ -24,7 +24,7 @@ gallery:
   - image: "/images/uploads/pavilion_img-5.webp"
     alt: "Close-up of a polished concrete bar under a wooden pavilion, highlighting the smooth surface and sturdy stone pillars, with a scenic desert and mountain backdrop."
     credit: ""
-  - image: "/images/uploads/pavilion_imgTwo.webp"
+  - image: "/images/uploads/pavilion_img-6.webp"
     alt: "Close-up view of the outdoor pavilion’s stacked stone bar with a smooth concrete countertop, set on a stamped concrete patio with artificial turf landscaping."
     credit: ""
 ---

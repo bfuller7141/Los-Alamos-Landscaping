@@ -10,7 +10,7 @@ const { title, image, link, mainAlt } = Astro.props as PortfolioProps;
 ---
 <li>
     <a href={link}  class="portfolio-card">
-        <img src={image} alt={mainAlt} class="portfolio-card-img" loading="lazy" />
+        <img src={image} width="322" height="459" alt={mainAlt} class="portfolio-card-img" loading="lazy" />
         <div class="portfolio-card-link">
             <h3 class="portfolio-card-title">{title}</h3>
             <img src="/images/icons/icon_arrow-right.svg" alt="" role="presentation" class="portfolio-card-arrow" loading="lazy" />
