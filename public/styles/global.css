@@ -613,6 +613,9 @@ a:hover {
         margin-top: 2rem;
         grid-template-columns: repeat(1, 1fr);
     }
+    .btn-wrapper.small-padding {
+        padding-top: 1rem;
+    }
     .padding-hero {
         padding-top: var(--hero-md);
         padding-bottom: var(--hero);

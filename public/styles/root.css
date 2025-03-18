@@ -1,34 +1,77 @@
 :root {
-    /* Colors (unchanged) */
-    --red-100: #FCD7D3;
-    --red-200: #F8AEA7;
-    --red-300: #F5867C;
-    --red-400: #F15D50;
-    --red-500: #D82D1F; /* Base color */
-    --red-600: #E03522;
-    --red-700: #BE2A1D;
-    --red-800: #8F2016;
-    --red-900: #5F150E;
-  
-    --brown-100: #D7D5D5;
-    --brown-200: #AFABAB;
-    --brown-300: #868280;
-    --brown-400: #5E5856;
-    --brown-500: #423937; /* Base color */
-    --brown-600: #2B2523;
-    --brown-700: #201C1A;
-  
-    --black: #1D1D1D;
-    --white: #F8F8F8;
-    --full-white: #FFFFFF;
-  
-    --gray-100: #F1F1F2;
-    --gray-200: #EAEAEA;
-    --gray-300: #919191;
-    --gray-400: #606161;
-    --gray-500: #333333;
-  
-    /* Responsive Font Sizes */
+  /* Colors (unchanged) */
+  --red-100: #FCD7D3;
+  --red-200: #F8AEA7;
+  --red-300: #F5867C;
+  --red-400: #F15D50;
+  --red-500: #D82D1F; /* Base color */
+  --red-600: #E03522;
+  --red-700: #BE2A1D;
+  --red-800: #8F2016;
+  --red-900: #5F150E;
+
+  --brown-100: #D7D5D5;
+  --brown-200: #AFABAB;
+  --brown-300: #868280;
+  --brown-400: #5E5856;
+  --brown-500: #423937; /* Base color */
+  --brown-600: #2B2523;
+  --brown-700: #201C1A;
+
+  --black: #1D1D1D;
+  --white: #F8F8F8;
+  --full-white: #FFFFFF;
+
+  --gray-100: #F1F1F2;
+  --gray-200: #EAEAEA;
+  --gray-300: #919191;
+  --gray-400: #606161;
+  --gray-500: #333333;
+
+  /* Responsive Font Sizes */
+  --fs-body: clamp(1.125rem, 2.5vw, 1.25rem);
+  --fs-bodysm: clamp(1rem, 2vw, 1.125rem);
+  --fs-bodyxs: clamp(1rem, 2vw, 1.1rem);
+  --fs-bodylg: clamp(1.25rem, 2.5vw, 1.9rem);
+  --fs-bodyxl: clamp(1.75rem, 3vw, 2.75rem);
+
+  --page-title: clamp(3rem, 6vw, 5.5rem);
+  --section-title: clamp(2.5rem, 5vw, 4.5rem);
+  --title-lg: clamp(2.5rem, 3vw, 4rem);
+  --title-md: clamp(2.25rem, 2.5vw, 3.5rem);
+  --title-sm: clamp(1.5rem, 2vw, 2.5rem);
+  --title-xs: clamp(1.25rem, 2.5vw, 1.5rem);
+
+  /* Padding and Spacing */
+  --title-padding: 0 0 1.5rem 0;
+  --body-padding: 0 0 2rem 0;
+
+  /* Section Padding (increased vertical spacing) */
+  --side: clamp(1rem, 2vw, 3rem);
+  --vertical: clamp(3.5rem, 6vw, 5rem);
+  --lg-vertical: clamp(3.75rem, 6vw, 9rem);
+  --md-vertical: clamp(3rem, 6vw, 7rem);
+  --sm-vertical: clamp(2rem, 6vw, 2.5rem);
+
+  /* Hero Section Spacing */
+  --hero: clamp(5rem, 10vw, 6rem);
+  --hero-md: clamp(6rem, 10vw, 8rem);
+  --hero-lg: clamp(10rem, 12vw, 12rem);
+
+  --small: 0.25rem;
+  --nav: 1.5rem;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--red-500);
+  border-radius: 4px;
+  offset: 2px;
+}
+
+/* Mobile-specific adjustments for increased legibility and spacing */
+@media (max-width: 600px) {
+  :root {
+    /* Increase font sizes for mobile readability */
     --fs-body: clamp(1.25rem, 2.5vw, 1.5rem);
     --fs-bodysm: clamp(1.15rem, 2vw, 1.3rem);
     --fs-bodyxs: clamp(1rem, 2vw, 1.1rem);
@@ -41,52 +84,8 @@
     --title-md: clamp(2.25rem, 2.5vw, 3.5rem);
     --title-sm: clamp(1.5rem, 2vw, 2.5rem);
     --title-xs: clamp(1.25rem, 2.5vw, 1.5rem);
-  
-    /* Padding and Spacing */
-    --title-padding: 0 0 1.5rem 0;
-    --body-padding: 0 0 2rem 0;
-  
-    /* Section Padding */
-    --side: clamp(1rem, 2vw, 3rem);
-    --vertical: clamp(2rem, 5vw, 4rem);
-    --lg-vertical: clamp(2.5rem, 5vw, 8rem);
-    --md-vertical: clamp(2rem, 5vw, 6rem);
-    --sm-vertical: clamp(1.5rem, 5vw, 2rem);
-  
-    /* Hero Section Spacing */
+
+    /* Increase hero top spacing for a less cramped feel */
     --hero: clamp(5rem, 10vw, 6rem);
-    --hero-md: clamp(6rem, 10vw, 8rem);
-    --hero-lg: clamp(10rem, 12vw, 12rem);
-  
-    --small: 0.25rem;
-    --nav: 1.5rem;
   }
-  
-  *:focus-visible {
-    outline: 3px solid var(--red-500);
-    border-radius: 4px;
-    offset: 2px;
-  }
-  
-  /* Mobile-specific adjustments for increased legibility and spacing */
-  @media (max-width: 600px) {
-    :root {
-      /* Increase font sizes for mobile readability */
-      --fs-body: clamp(1.25rem, 2.5vw, 1.5rem);
-      --fs-bodysm: clamp(1.15rem, 2vw, 1.3rem);
-      --fs-bodyxs: clamp(1rem, 2vw, 1.1rem);
-      --fs-bodylg: clamp(1.25rem, 2.5vw, 1.9rem);
-      --fs-bodyxl: clamp(1.75rem, 3vw, 2.75rem);
-  
-      --page-title: clamp(3rem, 6vw, 5.5rem);
-      --section-title: clamp(2.5rem, 5vw, 4.5rem);
-      --title-lg: clamp(2.5rem, 3vw, 4rem);
-      --title-md: clamp(2.25rem, 2.5vw, 3.5rem);
-      --title-sm: clamp(1.5rem, 2vw, 2.5rem);
-      --title-xs: clamp(1.25rem, 2.5vw, 1.5rem);
-  
-      /* Increase hero top spacing for a less cramped feel */
-      --hero: clamp(5rem, 10vw, 6rem);
-    }
-  }
-  
+}
