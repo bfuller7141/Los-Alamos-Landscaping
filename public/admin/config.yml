@@ -14,8 +14,8 @@ public_folder: "public/images/uploads"
 collections:
   - name: "services"
     label: "Services"
-    folder: "content/services"
-    create: false
+    folder: "src/content/services"
+    create: true
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
@@ -33,7 +33,7 @@ collections:
 
   - name: "testimonials"
     label: "Testimonials"
-    folder: "content/testimonials"
+    folder: "src/content/testimonials"
     create: true
     slug: "{{slug}}"
     fields:
@@ -43,7 +43,7 @@ collections:
 
   - name: "team"
     label: "Team"
-    folder: "content/team"
+    folder: "src/content/team"
     create: true
     slug: "{{slug}}"
     fields:
@@ -53,7 +53,7 @@ collections:
 
   - name: "projects"
     label: "Projects"
-    folder: "content/projects"
+    folder: "src/content/projects"
     create: true
     slug: "{{slug}}"
     fields:

@@ -1,400 +1,587 @@
+---
+import { getCollection } from "astro:content";
+const services = await getCollection("services");
+---
 <nav class="nav-main">
-    <div class="padding-nav">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="nav-left">
-                    <div class="nav-logo">
-                        <a href="/" aria-label="go to home page" class="logo-link">
-                            <img src="/images/logos/lalam-logo_main.svg" alt="Los Alamos Landscaping & More primary logo" loading="eager" />
-                        </a>
-                    </div>
-                    <div class="menu-wrap">
-                        <ul class="nav-list">
-                            <li class="nav-link"><a href="/">Home</a></li>
-                            <li class="nav-link"><a href="/services">Services</a></li>
-                            <li class="nav-link"><a href="/about">About</a></li>
-                            <li class="nav-link"><a href="/blog">Blog</a></li>
-                            <li class="nav-link"><a href="/contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="nav-right">
-                    <a href="https://laland.propertyserviceportal.com" target="_blank" class="nav-link hide-tab" aria-label="Go to customer portal (opens in new tab)">Customer Portal</a>
-                    <a href="https://losalamoslandsca.securepayments.cardpointe.com/pay?" target="_blank" class="btn-brown short hide-mobile" aria-label="Pay My Bill (opens in a new tab)">Pay My Bill</a>
-                    <button class="hamburger" aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
+  <div class="padding-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="nav-left">
+          <div class="nav-logo">
+            <a href="/" aria-label="go to home page" class="logo-link">
+              <img
+                src="/images/logos/lalam-logo_main.svg"
+                alt="Los Alamos Landscaping & More primary logo"
+                loading="eager"
+              />
+            </a>
+          </div>
+          <div class="menu-wrap">
+            <ul class="nav-list">
+              <li class="nav-link"><a href="/">Home</a></li>
+
+              <!-- Desktop: Dropdown for Services -->
+              <li class="nav-link dropdown">
+                <a
+                  href="/services"
+                  class="dropdown-toggle"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Services
+                </a>
+                <ul class="dropdown-menu">
+                  {services.map((service) => (
+                    <li key={service.slug}>
+                      <a href={`/services/${service.slug}`}>
+                        <img
+                          src={service.data.icon}
+                          alt={`${service.data.title} icon`}
+                        />
+                        {service.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              <li class="nav-link"><a href="/about">About</a></li>
+              <li class="nav-link"><a href="/blog">Blog</a></li>
+              <li class="nav-link"><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="nav-right">
+          <a
+            href="https://laland.propertyserviceportal.com"
+            target="_blank"
+            class="nav-link hide-tab"
+            aria-label="Go to customer portal (opens in new tab)"
+            >Customer Portal</a
+          >
+          <a
+            href="https://losalamoslandsca.securepayments.cardpointe.com/pay?"
+            target="_blank"
+            class="btn-brown short hide-mobile"
+            aria-label="Pay My Bill (opens in new tab)"
+            >Pay My Bill</a
+          >
+          <button class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="mobile-menu">
-        <ul class="mobile-nav-list">
-            <li class="mobile-nav-link"><a href="/services">Services</a></li>
-            <li class="mobile-nav-link"><a href="/about">About</a></li>
-            <li class="mobile-nav-link"><a href="/blog">Blog</a></li>
-            <li class="mobile-nav-link"><a href="/contact">Contact</a></li>
-            <li class="mobile-nav-link"><a href="https://laland.propertyserviceportal.com" target="_blank" aria-label="Go to customer portal (opens in new tab)">Customer Portal</a></li>
-            <li class="mobile-nav-link"><a href="https://losalamoslandsca.securepayments.cardpointe.com/pay?" target="_blank" class="mobile-btn" aria-label="Pay My Bill (opens in a new tab)">Pay My Bill</a></li>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-nav-list">
+      <!-- Accordion for Services on Mobile -->
+      <li class="mobile-nav-link accordion">
+        <button class="accordion-toggle" aria-expanded="false">
+          Services
+        </button>
+        <ul class="accordion-menu">
+          {services.map((service) => (
+            <li key={service.slug}>
+              <a href={`/services/${service.slug}`}>
+                <img
+                  src={service.data.icon}
+                  alt={`${service.data.title} icon`}
+                />
+                {service.data.title}
+              </a>
+            </li>
+          ))}
         </ul>
-    </div>
+      </li>
+      <li class="mobile-nav-link"><a href="/about">About</a></li>
+      <li class="mobile-nav-link"><a href="/blog">Blog</a></li>
+      <li class="mobile-nav-link"><a href="/contact">Contact</a></li>
+      <li class="mobile-nav-link">
+        <a
+          href="https://laland.propertyserviceportal.com"
+          target="_blank"
+          aria-label="Go to customer portal (opens in new tab)"
+          >Customer Portal</a
+        >
+      </li>
+      <li class="mobile-nav-link">
+        <a
+          href="https://losalamoslandsca.securepayments.cardpointe.com/pay?"
+          target="_blank"
+          class="mobile-btn"
+          aria-label="Pay My Bill (opens in new tab)"
+          >Pay My Bill</a
+        >
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <style>
-    .nav-main {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
+  /* GENERAL STYLES */
+  .nav-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .padding-nav {
+    padding-left: var(--side);
+    padding-right: var(--side);
+    padding-top: var(--nav);
+    padding-bottom: 0.5rem;
+    transition: padding 0.5s ease;
+  }
+  .nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .nav-right {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav-logo {
+    flex: 1;
+    min-width: 12rem;
+    max-width: 12rem;
+  }
+  .nav-logo img {
+    margin: -1rem 0 0 0;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-link {
+    list-style: none;
+    color: var(--brown-500);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .nav-link:hover {
+    color: var(--red-500);
+  }
+  .nav-link a {
+    padding: 0.125rem 0.5rem;
+    text-decoration: none;
+    color: var(--brown-500);
+    transition: all 0.3s ease;
+  }
+  .nav-link a:hover {
+    color: var(--red-500);
+    text-decoration: none;
+  }
+  /* Remove underline for Customer Portal */
+  .nav-link.hide-tab {
+    text-decoration: none !important;
+  }
+  .nav-link.hide-tab:hover {
+    text-decoration: none !important;
+  }
+  .menu-wrap {
+    display: flex;
+  }
+  .nav-link a.active {
+    color: var(--red-500);
+    font-weight: bold;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 3rem;
+    right: 1.25rem;
+    z-index: 1100;
+    transition: top 0.4s ease;
+  }
+  .hamburger span {
+    display: block;
+    width: 1.5rem;
+    height: 0.19rem;
+    border-radius: 2px;
+    background-color: var(--brown-500);
+    transition: all 0.3s ease;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(0.25rem, 0.25rem);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(0.35rem, -0.35rem);
+  }
 
-    .padding-nav {
-        padding-left: var(--side);
-        padding-right: var(--side);
-        padding-top: var(--nav);
-        padding-bottom: 0.5rem;
-        transition: padding 0.5s ease;
+  /* MOBILE MENU STYLES */
+  .mobile-menu {
+    padding: 4rem 1rem 1rem 1rem; /* extra top padding */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 769px) {
+    .mobile-menu {
+      display: none !important;
     }
+  }
+  .mobile-nav-link {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  .mobile-btn {
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    font-size: var(--title-xs);
+    text-decoration: none;
+    color: var(--white) !important;
+    background-color: var(--red-500);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background-color ease-in-out 0.25s;
+    box-sizing: border-box;
+  }
+  .mobile-nav-link a {
+    display: block;
+    padding: 1rem;
+    margin: 1rem 0 0 0;
+    width: 100%;
+    text-decoration: none;
+    color: var(--brown-500);
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .mobile-nav-link a:hover {
+    color: var(--red-500);
+    text-decoration: none;
+  }
 
-    .nav-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .nav-left {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-    }
+  /* Accordion Styles for Mobile Services */
+  .accordion-toggle {
+    display: block;
+    padding: 1rem;
+    margin: 1rem 0 0 0;
+    width: 100%;
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--brown-500);
+    background: none;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .accordion-toggle::after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;  /* slightly larger for mobile */
+    height: 8px;   /* slightly larger for mobile */
+    margin-left: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20224.45%20115.35%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23d82d1f%3B%7D%3C/style%3E%3C/defs%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M120.33%2C112.21L220.5%2C20.92c8.12-7.4%2C2.89-20.92-8.1-20.92H12.05C1.07%2C0-4.17%2C13.52%2C3.95%2C20.92l100.17%2C91.29c4.59%2C4.18%2C11.61%2C4.18%2C16.2%2C0Z%22/%3E%3C/svg%3E");
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+  .accordion-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+  .accordion-toggle:focus {
+    outline: none;
+  }
+  .accordion-menu {
+    list-style: none;
+    padding-left: 1.5rem;
+    display: none;
+  }
+  .accordion-menu.active {
+    display: block;
+  }
+  .accordion-menu li a {
+    display: flex;
+    align-items: center;
+  }
+  .accordion-menu li a img {
+    width: 32px;  /* increased for mobile */
+    height: 32px; /* increased for mobile */
+    margin-right: 0.5rem;
+  }
 
-    .nav-right {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        justify-content: flex-end;
-        align-items: center;
-    }
+  /* Prevent scrolling when mobile menu is open */
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
 
-    .nav-logo {
-        flex: 1;
-        min-width: 12rem;
-        max-width: 12rem;
+  /* RESPONSIVE BEHAVIOR */
+  @media screen and (max-width: 1020px) {
+    .hide-tab {
+      display: none;
     }
-
-    .nav-logo img {
-        margin: -1rem 0 0 0;
-    }
-
-    .nav-list {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .nav-link {
-        list-style: none;
-        text-decoration: none;
-        color: var(--brown-500);
-        font-size: 1.2rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    .nav-link:hover {
-        color: var(--red-500);
-        transition: all 0.3s ease;
-    }
-    .nav-link a {
-        padding: 0.125rem 0.5rem;
-        text-decoration: none;
-        color: var(--brown-500);
-        transition: all 0.3s ease;
-    }
-    .nav-link a:hover {
-        color: var(--red-500);
-        transition: all 0.3s ease;
+  }
+  @media screen and (max-width: 768px) {
+    .hide-mobile {
+      display: none;
     }
     .menu-wrap {
-        display: flex;
+      display: none;
     }
-
-    .nav-link a.active {
-        color: var(--red-500);
-        font-weight: bold;
-    }
-
     .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 0.25rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        position: fixed;
-        top: 3rem;
-        right: 1.25rem;
-        z-index: 1100;
-        transition: top 0.4s ease;
+      display: flex;
     }
+    .nav-logo img {
+      max-width: 10rem;
+    }
+  }
 
-    .hamburger span {
-        display: block;
-        width: 1.5rem;
-        height: 0.19rem;
-        border-radius: 2px;
-        background-color: var(--brown-500);
-        transition: all 0.3s ease;
-    }
+  /* SCROLL-SPECIFIC STYLES */
+  .nav-main.scrolled {
+    margin-top: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, margin-top 0.4s ease;
+  }
+  .nav-main.scrolled .nav-logo img {
+    margin: 0.5rem 0 0 0;
+    max-width: 10rem;
+  }
+  .nav-main.scrolled .padding-nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: padding 0.4s ease;
+  }
+  .nav-main.scrolled .hamburger {
+    top: 1rem;
+  }
 
-    /* Hamburger-to-X Animation */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(0.25rem, 0.25rem);
+  /* DROPDOWN STYLES FOR DESKTOP */
+  .nav-link.dropdown {
+    position: relative;
+  }
+  /* Instead of targeting the anchor alone, we use the parent li hover state to ensure the Services link maintains hover state even when hovering its dropdown */
+  .nav-link.dropdown:hover .dropdown-toggle {
+    color: var(--red-500);
+  }
+  .nav-link.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+  }
+  .dropdown-toggle::after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 6px;
+    margin-left: 0.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20224.45%20115.35%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23d82d1f%3B%7D%3C/style%3E%3C/defs%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M120.33%2C112.21L220.5%2C20.92c8.12-7.4%2C2.89-20.92-8.1-20.92H12.05C1.07%2C0-4.17%2C13.52%2C3.95%2C20.92l100.17%2C91.29c4.59%2C4.18%2C11.61%2C4.18%2C16.2%2C0Z%22/%3E%3C/svg%3E");
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+  .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+  }
+  @media screen and (min-width: 769px) {
+    .dropdown-menu {
+      min-width: 280px;
     }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(0.35rem, -0.35rem);
-    }
-
-    /* Mobile Menu Styles */
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        padding: 1rem;
-        align-items: flex-start;
-        justify-content: flex-start;
-        box-sizing: border-box;
-        opacity: 0;
-        pointer-events: none;
-        transform: scale(0.95);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .mobile-menu.active {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
-    }
-
-    .mobile-nav-list {
-        list-style: none;
-        padding: 1rem;
-        margin: 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
- /* Hide Mobile Menu on Desktop */
- @media screen and (min-width: 769px) {
-        .mobile-menu {
-            display: none !important;
-        }
-    }
-
-    .mobile-nav-link {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    .mobile-btn {
-        font-family: 'Rubik', sans-serif;
-        font-weight: 600;
-        font-size: var(--title-xs);
-        text-decoration: none;
-        color: var(--white) !important;
-        background-color: var(--red-500);
-        border: none;
-        border-radius: 0.25rem;
-        padding: 0.75rem 2rem;
-        cursor: pointer;
-        transition: background-color ease-in-out 0.25s;
-        box-sizing: border-box;
-    }
-
-    .mobile-nav-link a {
-        display: block;
-        padding: 1rem;
-        margin: 1rem 0 0 0;
-        width: 100%;
-        text-decoration: none;
-        color: var(--brown-500);
-        font-size: 1.25rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .mobile-nav-link a:hover {
-        color: var(--red-500);
-    }
-
-    /* Prevent scrolling */
-    .no-scroll {
-        overflow: hidden;
-        height: 100vh;
-    }
-
-    /* Responsive Behavior */
-    @media screen and (max-width: 1020px) {
-        .hide-tab {
-            display: none;
-        }
-    }
-    @media screen and (max-width: 768px) {
-        .hide-mobile {
-            display: none;
-        }
-
-        .menu-wrap {
-            display: none;
-        }
-
-        .hamburger {
-            display: flex;
-        }
-
-        .nav-logo img {
-            max-width: 10rem;
-        }
-    }
-
-    /* Scroll-Specific Styles */
-    .nav-main.scrolled {
-        margin-top: 0;
-        background-color: #FFFFFF;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.4s ease, box-shadow 0.4s ease, margin-top 0.4s ease;
-    }
-
-    .nav-main.scrolled .nav-logo img {
-        margin: 0.5rem 0 0 0;
-        max-width: 10rem;
-    }
-
-    .nav-main.scrolled .padding-nav {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        transition: padding 0.4s ease;
-    }
-
-    .nav-main.scrolled .hamburger {
-        top: 1rem;
-    }
+  }
+  .dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: var(--brown-500);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .dropdown-menu li a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+  .dropdown-menu li a:hover {
+    background-color: #f9f9f9;
+    color: var(--red-500);
+  }
+  .nav-link.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 </style>
 
 <script>
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const body = document.body;
+  const hamburger = document.querySelector(".hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const body = document.body;
 
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.toggle('active');
-            mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-            hamburger.classList.toggle('active');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("active");
+      mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+      hamburger.classList.toggle("active");
+      if (isOpen) {
+        body.classList.add("no-scroll");
+      } else {
+        body.classList.remove("no-scroll");
+      }
+    });
+  }
 
-            if (isOpen) {
-                body.classList.add('no-scroll');
-            } else {
-                body.classList.remove('no-scroll');
-            }
-        });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 769) {
+      if (mobileMenu) {
+        mobileMenu.classList.remove("active");
+        mobileMenu.setAttribute("aria-hidden", "true");
+      }
+      if (hamburger) {
+        hamburger.classList.remove("active");
+      }
+      body.classList.remove("no-scroll");
     }
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 769) {
-            if (mobileMenu) {
-                mobileMenu.classList.remove("active");
-            }
-            if (mobileMenu) {
-                mobileMenu.setAttribute("aria-hidden", "true");
-            }
-            if (hamburger) {
-                hamburger.classList.remove("active");
-            }
-            body.classList.remove("no-scroll");
-        }
-    });
+  });
 
-    const navbar = document.querySelector('.nav-main');
-    const logo = document.querySelector('.nav-logo img');
-    const originalLogo = '/images/logos/lalam-logo_main.svg';
-    const scrolledLogo = '/images/logos/lalam-logo_wordmark.svg';
+  const navbar = document.querySelector(".nav-main");
+  const logo = document.querySelector(".nav-logo img");
+  const originalLogo = "/images/logos/lalam-logo_main.svg";
+  const scrolledLogo = "/images/logos/lalam-logo_wordmark.svg";
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (navbar) {
+      if (scrollTop > 0) {
+        navbar.classList.add("scrolled");
+        if (logo) logo.src = scrolledLogo;
+        if (hamburger) hamburger.style.top = "1rem";
+      } else {
+        navbar.classList.remove("scrolled");
+        if (logo) logo.src = originalLogo;
+        if (hamburger) hamburger.style.top = "3rem";
+      }
+    }
+  });
 
-        if (navbar) {
-            if (scrollTop > 0) {
-                navbar.classList.add('scrolled');
-                if (logo) (logo as HTMLImageElement).src = scrolledLogo;
-
-                // Ensure the hamburger is positioned correctly on scroll
-                if (hamburger) {
-                    (hamburger as HTMLElement).style.top = '1rem';
-                }
-            } else {
-                navbar.classList.remove('scrolled');
-                if (logo) (logo as HTMLImageElement).src = originalLogo;
-
-                // Reset the hamburger position
-                if (hamburger) {
-                    (hamburger as HTMLElement).style.top = '3rem'; // Default top position
-                }
-            }
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const currentPath = window.location.pathname;
-
-        // Desktop Navigation
-        const navLinks = document.querySelectorAll(".nav-link a");
-        navLinks.forEach((link) => {
-            if (link.getAttribute("href") === currentPath) {
-                link.classList.add("active");
-            }
-        });
-
-        // Mobile Navigation
-        const mobileLinks = document.querySelectorAll(".mobile-nav-link a");
-        mobileLinks.forEach((link) => {
-            if (link.getAttribute("href") === currentPath) {
-                link.classList.add("active");
-            }
-        });
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-    let currentPath = window.location.pathname.replace(/\/$/, ""); 
-
-    // Desktop Navigation
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname;
     document.querySelectorAll(".nav-link a").forEach((link) => {
-        let linkPath = link.getAttribute("href")?.replace(/\/$/, ""); 
-        if (linkPath === currentPath) {
-            link.classList.add("active");
-        }
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      }
     });
-
-    // Mobile Navigation
     document.querySelectorAll(".mobile-nav-link a").forEach((link) => {
-        let linkPath = link.getAttribute("href")?.replace(/\/$/, "");
-        if (linkPath === currentPath) {
-            link.classList.add("active");
-        }
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      }
     });
-});
+  });
+
+  // Toggle desktop dropdown on click
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownToggle = document.querySelector(
+      ".nav-link.dropdown > .dropdown-toggle"
+    );
+    if (dropdownToggle) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const dropdownMenu = dropdownToggle.nextElementSibling;
+        const isExpanded =
+          dropdownToggle.getAttribute("aria-expanded") === "true";
+        dropdownToggle.setAttribute("aria-expanded", String(!isExpanded));
+        dropdownMenu.style.opacity = !isExpanded ? "1" : "0";
+        dropdownMenu.style.visibility = !isExpanded ? "visible" : "hidden";
+        dropdownMenu.style.transform = !isExpanded
+          ? "translateY(0)"
+          : "translateY(10px)";
+      });
+    }
+  });
+
+  // Toggle accordion for mobile Services
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordionToggle = document.querySelector(
+      ".mobile-nav-link.accordion .accordion-toggle"
+    );
+    if (accordionToggle) {
+      accordionToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const accordionMenu = accordionToggle.nextElementSibling;
+        const isExpanded =
+          accordionToggle.getAttribute("aria-expanded") === "true";
+        accordionToggle.setAttribute("aria-expanded", String(!isExpanded));
+        accordionMenu.classList.toggle("active");
+      });
+    }
+  });
 </script>
