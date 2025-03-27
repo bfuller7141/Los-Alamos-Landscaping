@@ -1,5 +1,5 @@
 ---
-title: "Pinon Park Splash Pad"
+title: "Pinon Splash Pad"
 description: "The Pinon Park Splash Pad in White Rock is a vibrant community space designed to bring families together during the warm months. Completed in collaboration with Los Alamos County and local artist Abby Feldman, this project was part of a larger Recreation Capital Outlay initiative. Los Alamos Landscaping & More proudly constructed the splash pad, which features a flow-through water system that minimizes maintenance costs while maximizing fun. Located near the Youth Activity Center and White Rock Library, the splash pad offers a safe, refreshing space for children to play while parents relax in shaded areas."
 image: "/images/uploads/splash_main-img.webp"
 mainAlt: "A young child standing under a cascading water feature at the splash pad."
