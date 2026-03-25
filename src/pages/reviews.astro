@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import NavMain from "../components/NavMain.astro";
+import TestimonialGrid from "../components/TestimonialGrid.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Customer Reviews | Los Alamos Landscaping & More"
+      description="Read real customer reviews for Los Alamos Landscaping & More. See what homeowners and businesses in Los Alamos and White Rock say about our landscaping services."
+      keywords="Los Alamos Landscaping reviews, customer testimonials, landscaping reviews New Mexico, White Rock landscaping reviews"
+      url="https://losalamoslandscaping.com/reviews"
+    />
+  </head>
+  <body>
+    <SkipMain />
+    <header>
+      <NavMain />
+    </header>
+    <main id="main">
+      <section class="hero">
+        <div class="padding-hero-xlbottom">
+          <div class="container">
+            <div class="wrapper-center">
+              <h1 class="title-sm text-red text-center">Customer Reviews</h1>
+              <h2 class="title-page text-center">What Our Customers Say</h2>
+              <p class="body-txt text-center">
+                Browse all verified customer testimonials from Los Alamos Landscaping & More.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="deco-bottom-short"></div>
+      </section>
+
+      <section class="section-dark">
+        <div class="padding-global">
+          <div class="container">
+            <div class="wrapper-center">
+              <h2 class="title-section text-center text-underline-center">All Reviews</h2>
+            </div>
+            <TestimonialGrid limit={0} showAllButton={false} />
+          </div>
+        </div>
+      </section>
+    </main>
+    <FooterMain />
+  </body>
+</html>

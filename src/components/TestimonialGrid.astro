@@ -1,6 +1,13 @@
 ---
 import TestimonialCard from "./TestimonialCard.astro";
 
+interface Props {
+  limit?: number;
+  showAllButton?: boolean;
+}
+
+const { limit = 5, showAllButton = true } = Astro.props as Props;
+
 // Import and eagerly load testimonials
 const testimonials = import.meta.glob("../content/testimonials/*.md", { eager: true });
 
@@ -25,11 +32,14 @@ const parsedTestimonials = Object.entries(testimonials).map(([path, module]) => 
   };
 });
 
-const shuffledTestimonials = shuffleArray(parsedTestimonials).slice(0, 6);
+const shuffledTestimonials = shuffleArray(parsedTestimonials);
+const displayedTestimonials = limit > 0 ? shuffledTestimonials.slice(0, limit) : shuffledTestimonials;
+const isLimitedLayout = limit > 0;
+const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
 ---
 <div class="testimonial-container">
-    <ul class="testimonial-grid">
-        {shuffledTestimonials.map((testimonial) => (
+    <ul class:list={["testimonial-grid", { "is-bento": useBentoLayout }]}>
+        {displayedTestimonials.map((testimonial) => (
             <li>
                 <TestimonialCard
                     rating={testimonial.frontmatter.rating}
@@ -39,37 +49,91 @@ const shuffledTestimonials = shuffleArray(parsedTestimonials).slice(0, 6);
             </li>
         ))}
     </ul>
-</div>
+    <div class="testimonial-slider">
+        <div class="testimonial-slider-wrapper">
+            {displayedTestimonials.map((testimonial) => (
+                <div class="testimonial-card-wrapper">
+                    <TestimonialCard
+                        rating={testimonial.frontmatter.rating}
+                        name={testimonial.frontmatter.name}
+                        testimonial={testimonial.frontmatter.testimonial}
+                    />
+                </div>
+            ))}
+        </div>
+        <div class="testimonial-dots">
+          {displayedTestimonials.map((testimonial, index) => (
+            <div class="testimonial-dot" data-index={index}></div>
+          ))}
+        </div>
+    </div>
 
-<div class="testimonial-slider">
-    <div class="testimonial-slider-wrapper">
-        {shuffledTestimonials.map((testimonial) => (
-            <div class="testimonial-card-wrapper">
-                <TestimonialCard
-                    rating={testimonial.frontmatter.rating}
-                    name={testimonial.frontmatter.name}
-                    testimonial={testimonial.frontmatter.testimonial}
-                />
-            </div>
-        ))}
-    </div>
-    <div class="testimonial-dots">
-      {shuffledTestimonials.map((testimonial, index) => (
-        <div class="-testimonial-dot" data-index={index}></div>
-      ))}
-    </div>
-  </div>
+    {showAllButton && (
+        <div class="btn-wrapper center testimonials-cta">
+            <a href="/reviews" class="btn-primary">View All Reviews</a>
+        </div>
+    )}
 </div>
 
 <style>
+    .testimonial-container {
+        width: 100%;
+    }
+
     .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-        gap: 2rem;
+        column-count: 3;
+        column-gap: 2rem;
         padding: 0;
         margin: 3rem 0 0 0;
         list-style: none;
         position: relative;
+    }
+
+    .testimonial-grid li {
+        break-inside: avoid;
+        margin: 0 0 2rem;
+        width: 100%;
+    }
+
+    .testimonial-grid.is-bento {
+        column-count: initial;
+        column-gap: 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-areas:
+            "left-top center right-top"
+            "left-bottom center right-bottom";
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .testimonial-grid.is-bento li {
+        break-inside: initial;
+        margin: 0;
+        display: flex;
+    }
+
+    .testimonial-grid.is-bento li:nth-child(1) { grid-area: left-top; }
+    .testimonial-grid.is-bento li:nth-child(2) { grid-area: left-bottom; }
+    .testimonial-grid.is-bento li:nth-child(3) { grid-area: center; }
+    .testimonial-grid.is-bento li:nth-child(4) { grid-area: right-top; }
+    .testimonial-grid.is-bento li:nth-child(5) { grid-area: right-bottom; }
+
+    @media screen and (max-width: 1200px) {
+        .testimonial-grid {
+            column-count: 2;
+        }
+
+        .testimonial-grid.is-bento {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-areas: none;
+            gap: 1.5rem;
+        }
+
+        .testimonial-grid.is-bento li {
+            grid-area: auto !important;
+        }
     }
     /* Slider Layout for Smaller Screens */
     @media screen and (max-width: 867px) {
@@ -117,6 +181,11 @@ const shuffledTestimonials = shuffleArray(parsedTestimonials).slice(0, 6);
         background-color: var(--red-500);
     }
     }
+
+    .testimonials-cta {
+        margin-top: 1rem;
+    }
+
 /* Hide slider for larger screens */
   @media screen and (min-width: 868px) {
     .testimonial-slider {
