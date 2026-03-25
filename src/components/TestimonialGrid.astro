@@ -4,9 +4,10 @@ import TestimonialCard from "./TestimonialCard.astro";
 interface Props {
   limit?: number;
   showAllButton?: boolean;
+  shuffleOnLoad?: boolean;
 }
 
-const { limit = 5, showAllButton = true } = Astro.props as Props;
+const { limit = 5, showAllButton = true, shuffleOnLoad = limit > 0 } = Astro.props as Props;
 
 // Import and eagerly load testimonials
 const testimonials = import.meta.glob("../content/testimonials/*.md", { eager: true });
@@ -37,7 +38,7 @@ const displayedTestimonials = limit > 0 ? shuffledTestimonials.slice(0, limit) :
 const isLimitedLayout = limit > 0;
 const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
 ---
-<div class="testimonial-container">
+<div class="testimonial-container" data-shuffle={shuffleOnLoad ? "true" : "false"}>
     <ul class:list={["testimonial-grid", { "is-bento": useBentoLayout }]}>
         {displayedTestimonials.map((testimonial) => (
             <li>
@@ -75,6 +76,25 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
     )}
 </div>
 
+<script>
+  function shuffleElements(parent) {
+    const items = [...parent.children];
+    for (let i = items.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    for (const item of items) parent.appendChild(item);
+  }
+
+  const containers = document.querySelectorAll(".testimonial-container[data-shuffle='true']");
+  containers.forEach((container) => {
+    const grid = container.querySelector(".testimonial-grid");
+    const slider = container.querySelector(".testimonial-slider-wrapper");
+    if (grid) shuffleElements(grid);
+    if (slider) shuffleElements(slider);
+  });
+</script>
+
 <style>
     .testimonial-container {
         width: 100%;
@@ -111,6 +131,10 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
         break-inside: initial;
         margin: 0;
         display: flex;
+    }
+
+    .testimonial-grid.is-bento li > * {
+        width: 100%;
     }
 
     .testimonial-grid.is-bento li:nth-child(1) { grid-area: left-top; }
