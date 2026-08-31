@@ -8,7 +8,7 @@
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Content-Security-Policy = """
       default-src 'self';
-      script-src 'self' 'unsafe-inline';
+      script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
       img-src 'self' data:;
@@ -17,3 +17,14 @@
       object-src 'none';
       frame-ancestors 'self';
     """
+
+# Stop high-volume bots before static pages and assets are served. The limit is
+# intentionally generous enough for normal browsing, including first-page assets.
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+
+  [redirects.rate_limit]
+    window_limit = 120
+    window_size = 60
+    aggregate_by = ["ip", "domain"]

@@ -1,0 +1,153 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import SkipMain from "../components/buttons/SkipMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import NavMain from "../components/NavMain.astro";
+
+const recaptchaSiteKey = "6Ldj86EtAAAAALmU4K3V9I6QAb_GNB6SouzO4DQB";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Pay My Bill Securely | Los Alamos Landscaping"
+      description="Verify that you are human before continuing to the secure Los Alamos Landscaping payment portal."
+      keywords="Los Alamos Landscaping, online payment, pay bill"
+      url="https://losalamoslandscaping.com/pay-my-bill"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <SkipMain />
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="payment-title">
+        <div class="padding-hero-xlbottom">
+          <div class="container-short">
+            <div class="card-wrapper payment-card">
+              <div class="wrapper-center payment-verification">
+                <h1 class="title-sm text-red text-center">Secure Online Payment</h1>
+                <h2 id="payment-title" class="title-page text-center">Pay My Bill</h2>
+                <p class="body-txt text-center">
+                  Complete the quick security check below, and you’ll be sent to our secure CardPointe payment portal.
+                </p>
+
+                <div id="payment-error" class="body-wrapper payment-alert" role="alert" hidden>
+                  <p class="body-sm no-padding">
+                    <strong>We couldn’t verify your request.</strong>
+                    <span id="payment-error-message">Please complete the security check and try again.</span>
+                  </p>
+                </div>
+
+                <form action="/payment-access" method="POST" class="wrapper-center" id="payment-verification-form">
+                  <div class="hidden-all" aria-hidden="true">
+                    <label for="website">Leave this field blank</label>
+                    <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+                  </div>
+
+                  <div class="captcha-wrap">
+                    <div class="g-recaptcha" data-sitekey={recaptchaSiteKey}></div>
+                  </div>
+
+                  <div class="btn-wrapper center">
+                    <button class="btn-primary" type="submit">Continue to Secure Payment</button>
+                  </div>
+                </form>
+
+                <p class="body-sm text-center payment-note">
+                  Protected by reCAPTCHA. Payment is handled securely by CardPointe.
+                </p>
+                <p class="body-sm text-center no-padding">
+                  Having trouble paying online? Call us at <a href="tel:+15056626234">505-662-6234</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const error = params.get("error");
+      const alert = document.getElementById("payment-error");
+      const message = document.getElementById("payment-error-message");
+
+      if (error && alert && message) {
+        const messages: Record<string, string> = {
+          configuration: "Online payments are temporarily unavailable. Please call our office for assistance.",
+          unavailable: "The security service is temporarily unavailable. Please wait a moment and try again.",
+          "invalid-request": "Your request could not be processed. Please refresh the page and try again.",
+          verification: "Please complete the security check and try again.",
+        };
+        message.textContent = messages[error] || messages.verification;
+        alert.hidden = false;
+        history.replaceState({}, "", window.location.pathname);
+      }
+
+      const form = document.getElementById("payment-verification-form") as HTMLFormElement | null;
+      form?.addEventListener("submit", (event) => {
+        const recaptcha = form.querySelector<HTMLTextAreaElement>("[name='g-recaptcha-response']");
+        if (!recaptcha?.value) {
+          event.preventDefault();
+          if (alert && message) {
+            message.textContent = "Please complete the security check before continuing.";
+            alert.hidden = false;
+            alert.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .payment-card {
+    width: min(100%, 48rem);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem);
+  }
+
+  .payment-verification {
+    width: 100%;
+  }
+
+  .captcha-wrap {
+    min-height: 78px;
+  }
+
+  .payment-alert {
+    width: min(100%, 38rem);
+    box-sizing: border-box;
+    margin: 0 0 2rem;
+  }
+
+  .payment-alert[hidden] {
+    display: none;
+  }
+
+  .payment-alert span {
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .payment-note {
+    margin: 2rem 0 0;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (max-width: 380px) {
+    .captcha-wrap {
+      transform: scale(0.88);
+      transform-origin: center top;
+      margin-bottom: -0.6rem;
+    }
+  }
+</style>
