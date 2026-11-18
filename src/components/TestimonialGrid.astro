@@ -97,7 +97,10 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
 
 <style>
     .testimonial-container {
+        box-sizing: border-box;
+        min-width: 0;
         width: 100%;
+        max-width: 100%;
     }
 
     .testimonial-grid {
@@ -161,7 +164,8 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
     }
     /* Slider Layout for Smaller Screens */
     @media screen and (max-width: 867px) {
-    .testimonial-grid {
+    .testimonial-grid,
+    .testimonial-grid.is-bento {
         display: none;
     }
 
@@ -187,6 +191,7 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
 
     .testimonial-dots {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
         margin-top: 1rem;
@@ -230,6 +235,7 @@ const useBentoLayout = isLimitedLayout && displayedTestimonials.length >= 5;
       scroll-snap-type: x mandatory;
       gap: 1rem;
       scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
